@@ -1,0 +1,53 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.MySkills {
+    text-align: center;
+    font-size: xx-large;
+    margin-bottom: 50px;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 20px;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+.skill-title {
+    font-size: x-large;
+    padding-top: 50px;
+    text-align: center;
+    background-color: #5CB0FE;
+    height: 80px;
+    border-radius: 10px 10px 0 0;
+}
+
+.skills-content {
+    display: flex;
+    flex-direction: row;
+    margin-left: 150px;
+}
+
+.skills-icons {
+    width: 12%;
+    height: 12%;
+    margin-right: 15px;
+    align-items: center;
+    align-self: center;
+    justify-content: center;
+}
+
+.skills {
+    align-items: center;
+}
+
+.transition-project {
+    margin-top: 50px;
+    text-align: center;
+    font-size: x-large;
+    color: #6D78DD;
+}
