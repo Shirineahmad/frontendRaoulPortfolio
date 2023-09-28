@@ -21,6 +21,7 @@
     font-size: x-large;
     padding-top: 50px;
     text-align: center;
+    color: white;
     background-color: #5CB0FE;
     height: 80px;
     border-radius: 10px 10px 0 0;
@@ -33,16 +34,13 @@
 }
 
 .skills-icons {
-    width: 12%;
-    height: 12%;
+    width: 50px;
+    height: 50px;
     margin-right: 15px;
-    align-items: center;
-    align-self: center;
-    justify-content: center;
 }
 
 .skills {
-    align-items: center;
+    padding-top: 15px;
 }
 
 .transition-project {

@@ -1,8 +1,7 @@
 import React from 'react';
-import FrontendSkills from './components/FrontendSkills';
-import BackendSkills from './components/BackendSkills';
-import OtherSkills from './components/OtherSkills';
-import './css/SkillsSection.css';
+import FrontendSkills from './FrontendSkills';
+import BackendSkills from './BackendSkills';
+import OtherSkills from './OtherSkills';
 
 function SkillsSection() {
     return (
