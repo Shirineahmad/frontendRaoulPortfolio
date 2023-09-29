@@ -7,14 +7,14 @@ import NavBar from './NavBar';
 import ProjectCarousel from './ProjectCarousel';
 
 const RaoulPortfolio = () => {
-  const [data, setData] = useState([]);
+  const [HeroData, setHeroData] = useState([]);
 
   const fetchDataForHeroSection = () => {
     fetch('http://localhost:8000/Hero/getAll')
       .then((response) => response.json())
       .then((data) => {
         console.log(data.data)
-        setData(data.data)})
+        setHeroData(data.data)})
       .catch((error) => console.log(error));
   };
 
@@ -25,9 +25,9 @@ const RaoulPortfolio = () => {
     <div>
     <NavBar/>
     <HeroSection
-          key={data[0]?._id}
-          SmallDesc={data[0]?.SmallDesc}
-          HeroImage={data[0]?.HeroImage}
+          key={HeroData[0]?._id}
+          SmallDesc={HeroData[0]?.SmallDesc}
+          HeroImage={HeroData[0]?.HeroImage}
     />
     <AboutMe/>
     <ProjectCarousel />

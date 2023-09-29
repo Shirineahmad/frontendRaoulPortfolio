@@ -1,16 +1,16 @@
 import React from 'react';
 import '../css/Footer.css'
 
-const ContactInfo = () => {
+const ContactInfo = ({PhoneNumb , Email}) => {
   return (
     <div className="ContactInfo">
     <div className="phoneNumberContainer">
       <img className="PhoneIcon" src="Images/phone.svg" />
-      <div className="PhoneNb">81422765</div>
+      <div className="PhoneNb">{PhoneNumb}</div>
     </div>
     <div className="EmailContainer">
       <img className="EmailIcon" src="Images/Email.svg" />
-      <div className="FooterEmail">raoulbaddawi1@gmail.com</div>
+      <div className="FooterEmail">{Email}</div>
     </div>
   </div>
   );
