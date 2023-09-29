@@ -5,6 +5,9 @@ import Footer from './Footer';
 import HeroSection from './HeroSection';
 import NavBar from './NavBar';
 import ProjectCarousel from './ProjectCarousel';
+import Skills from './Skills';
+import TestimonialsSection from './TestimonialsSection';
+
 
 const RaoulPortfolio = () => {
   const [HeroData, setHeroData] = useState([]);
@@ -30,7 +33,10 @@ const RaoulPortfolio = () => {
           HeroImage={HeroData[0]?.HeroImage}
     />
     <AboutMe/>
+   <Skills/>
     <ProjectCarousel />
+    <TestimonialsSection/>
+  
     <Footer/>
     </div>
   );
