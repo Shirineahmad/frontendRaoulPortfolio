@@ -3,7 +3,19 @@ import ReviewModal from './Modal';
 
 function Testimonials() {
     const testimonialsData = [
-      
+        {
+            imageSrc: '/Images/TestimonialsImages/Testimonial 1.jpg',
+            name: 'John Doe',
+            email: 'john@example.com',
+            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        },
+        {
+            imageSrc: '/Images/TestimonialsImages/Testimonial 1.jpg',
+            name: 'Jane Smith',
+            email: 'jane@example.com',
+            description: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        },
+       
     ];
 
     const [currentIndex, setCurrentIndex] = useState(0);
