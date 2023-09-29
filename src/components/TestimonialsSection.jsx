@@ -7,7 +7,7 @@ function Testimonials() {
             imageSrc: '/Images/TestimonialsImages/Testimonial 1.jpg',
             name: 'John Doe',
             email: 'john@example.com',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elitkljljlkjlkjlkjlkjlkjlkjlkjlkjlkj.',
         },
         {
             imageSrc: '/Images/TestimonialsImages/Testimonial 1.jpg',
@@ -33,8 +33,12 @@ function Testimonials() {
     };
 
     return (
-        <div>
-            <h2 className="testimonials">Testimonials</h2>
+        
+        <div className="TestimonialSection" id="TestimonialSection">
+           
+            <div className="TestimonialContainer">
+            <div className="TestimonialTitles">
+        <b className="TheTestimonial">Testimonials</b></div>
             <div id="testimonials" className="testimonial-container">
                 <button id="left-btn" onClick={handlePrevSlide}>
                     <i className="arrow left-arrow"></i>
@@ -65,9 +69,13 @@ function Testimonials() {
             </div>
 
             <button id="openBtn" className="testimonial-button">
-                Leave a Review
+                Leave a Review !!
             </button>
+            <div className="TestimonialTitles">
+             
+            <b className="TestimonialFooter">You also can contact me and visit my social media</b></div>
             <ReviewModal />
+            </div>
         </div>
     );
 }

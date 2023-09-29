@@ -5,7 +5,7 @@
 
 .MySkills {
     text-align: center;
-    font-size: xx-large;
+    font-size: 45px;
     margin-bottom: 50px;
 }
 
@@ -19,7 +19,8 @@
 
 .skill-title {
     font-size: x-large;
-    padding-top: 50px;
+    padding-top: 30px;
+    padding-bottom: 30px;
     text-align: center;
     color: white;
     background-color: #5CB0FE;
@@ -49,4 +50,36 @@
     text-align: center;
     font-size: x-large;
     color: #6D78DD;
+}
+.frontend-skills,
+  .backend-skills,
+  .other-skills {
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); 
+    padding-bottom: 20px;
+    border-radius: 8px; 
+  }
+@media (max-width: 500px) {
+    .skills-grid {
+        display: block;
+        margin-left: 40px;
+        margin-right: 40px;
+    }
+
+    .skill-title {
+        width: 70%;
+        margin: 0 15% 0;
+    }
+
+    .skills-content {
+        display: flex;
+        flex-direction: row;
+        margin-left: 30%;
+    }
+
+    .frontend-skills,
+    .backend-skills,
+    .other-skills {
+        margin-top: 20px;
+        margin-bottom: 50px;
+    }
 }

@@ -6,7 +6,7 @@ import "../css/SkillsSection.css";
 
 function Skills() {
     return(
-    <div>
+    <div id='MySkills'>
     <h2 className="MySkills">My Skills</h2>
       <div className="skills-grid">
         <div className="frontend-skills">

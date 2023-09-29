@@ -3,7 +3,7 @@ import '../css/HeroSection.css';
 
 const HeroSection = ({ SmallDesc, HeroImage }) => {
   return (
-    <div className="head-section-2">
+    <div className="head-section-2" id='HeroSectionMain'>
       <div className="herosection3">
         <div className="helo">
           <p className="intro">Hello!</p>
