@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import ReviewModal from './Modal';
-import TestimonialContent from './TestimonialContent';
 
 function Testimonials() {
     const testimonialsData = [
-        < TestimonialContent />,
-        < TestimonialContent />,
+      
     ];
 
     const [currentIndex, setCurrentIndex] = useState(0);
