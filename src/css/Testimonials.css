@@ -13,6 +13,7 @@
   }
 
 .testimonial-container {
+    scale: 0.7;
     margin-left: 350px;
     margin-right: 350px;
     display: flex;
@@ -84,14 +85,18 @@ button {
         rgba(109, 120, 221, 1) 100%
       );
     color: #fff;
-    font-size:25px;
+   
     border: none;
-    padding: 10px 20px;
-    margin-top: 30px;
-    height: 73px;
-    width: 299px;
+  
+    
+    height: 50px;
+    width: 170px;
     font-weight: bold;
     border-radius: 6px;
+    margin-top: 5%;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
 }
 
 .leave-review {
@@ -155,11 +160,12 @@ button {
   }
   @media screen and (max-width: 1268px){
  .testimonial-container {
+    scale: 1;
         margin-left: 20px;
         margin-right: 20px;
     } 
 
-
+   
 
     .testimonial-image {
         height: 80px;
@@ -172,6 +178,7 @@ button {
   }
   @media screen and (max-width: 768px) {
     .testimonial-container {
+        scale: 1;
         margin-left: 20px;
         margin-right: 20px;
     }
@@ -188,6 +195,9 @@ button {
 }
 
 @media screen and (max-width: 480px) {
+    .testimonial-container{
+        scale: 1;
+    }
     .testimonial-slide {
         flex-direction: column; 
         align-items: center; 

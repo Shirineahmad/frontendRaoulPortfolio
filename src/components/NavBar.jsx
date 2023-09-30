@@ -9,7 +9,7 @@ const NavBar = () => {
   return (
     <div className="header" >
       <div className="headerlogo">
-      <a href="#HeroSectionMain"><img src="/Images/logo-removebg.png" alt="Logo"/></a>
+      <a href="#"><img src="/Images/logo-removebg.png" alt="Logo"/></a>
       </div>
       <div className="headerlist">
         <ul className="menu-list">

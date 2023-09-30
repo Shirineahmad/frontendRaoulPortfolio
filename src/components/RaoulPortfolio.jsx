@@ -33,7 +33,7 @@ const RaoulPortfolio = () => {
           HeroImage={HeroData[0]?.HeroImage}
     />
     <AboutMe/>
-   <Skills/>
+    <Skills/>
     <ProjectCarousel />
     <TestimonialsSection/>
   

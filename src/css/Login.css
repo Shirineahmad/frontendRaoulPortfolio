@@ -8,7 +8,7 @@
   overflow: hidden;
   border-radius: 12px;
   box-shadow: 7px 7px 10px 3px #24004628;
-  width: 500px;
+  width: 37vw;
   padding: 24px;
 
 }
@@ -66,14 +66,17 @@ label {
 
 /* Button */
 .LoginForm button {
+   display: flex;
+  justify-content: center; 
+  align-items: center;
   width: 85%;
   height: 40px;
   margin: 12px auto 10%;
-  color:white;
+  color: white;
   background: transparent;
   font-size: 1rem;
   font-weight: bold;
-  border: 1px solid black;
+  border: 1px solid white;
   border-radius: 4px;
   cursor: pointer;
   transition: 0.2s ease-in;
@@ -93,7 +96,7 @@ label {
 .LoginImage {
   max-width: 100%;
   
-  height: 500px;
+  height: 67vh;
 }
 .LoginContainer {
   display: flex;
@@ -106,4 +109,45 @@ label {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@media (max-width: 768px) {
+  .LoginContainer {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .Login {
+    width: 80vw; 
+    margin-bottom: 30px;
+  }
+
+  .LoginImageContainer {
+    width: 90%;
+    margin: 0; 
+    text-align: center;
+  }
+
+  .LoginImage {
+    
+    height: auto;
+  }
+
+
+}
+
+
+@media (max-width: 480px) {
+  .Login {
+    width: 90vw;
+    margin-bottom: 30px; 
+  }
+
+  .Login label {
+    font-size: 1.5rem; 
+  }
+
+  .LoginForm button {
+    width: 100%; 
+  }
 }

@@ -1,38 +1,33 @@
 import React from 'react';
+import { useEffect, useState } from 'react';
 import SkillContent from './SkillsContent';
 import "../css/SkillsSection.css";
 function FrontendSkills() {
+    const [data, setData] = useState([]);
+    const fetchDataForFrontSkills = () => {
+        fetch('http://localhost:8000/Skills/getAll')
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(data.data)
+            setData(data.data)})
+          .catch((error) => console.log(error));
+      };
+    
+      useEffect(() => {
+        fetchDataForFrontSkills();
+      }, []);
+
+      const filteredData = data.filter((FrontSkill) => FrontSkill?.SkillType === 'Front');
+
     return (
-        <div className="frontend-skills">
-            <SkillContent
-                iconSrc="/Images/Frontend/html5-alt-svgrepo-com.svg"
-                skillName="HTML"
-            />
-            <SkillContent
-                iconSrc="/Images/Frontend/css3-alt.svg"
-                skillName="CSS"
-            />
-            <SkillContent
-                iconSrc=" /Images/Frontend/square-js.svg"
-                skillName="Javascript"
-            />
-            <SkillContent
-                iconSrc="/Images/Frontend/react.svg"
-                skillName="React"
-            />
-            <SkillContent
-                iconSrc="/Images/Frontend/redux-fill-svgrepo-com.svg"
-                skillName="Redux"
-            />
-            <SkillContent
-                iconSrc="/Images/Frontend/tailwindcss-svgrepo-com.svg"
-                skillName="TailwindCSS"
-            />
-            <SkillContent
-                iconSrc="/Images/Frontend/bootstrap-fill-svgrepo-com.svg"
-                skillName="Bootstap"
-            />
-        </div>
+       <div className="frontend-skills">
+      {filteredData.map((FrontSkill) => (
+        <SkillContent
+          iconSrc={FrontSkill?.SkillImage}
+          skillName={FrontSkill?.SkillDesc}
+        />
+      ))}
+    </div>
     );
 }
 

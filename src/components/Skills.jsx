@@ -9,20 +9,25 @@ function Skills() {
     <div id='MySkills'>
     <h2 className="MySkills">My Skills</h2>
       <div className="skills-grid">
-        <div className="frontend-skills">
+        <div>
           <h4 className="skill-title">Front End</h4>
           <FrontendSkills />
         </div>
-        <div className="backend-skills">
+        <div>
           <h4 className="skill-title">Back End</h4>
           <BackendSkills />
         </div>
-        <div className="other-skills">
+        <div>
           <h4 className="skill-title">Other</h4>
           <OtherSkills />
         </div> 
         </div> 
-        <p className="transition-project">Discover More in Projects</p>
+       
+        <div className="TestimonialTitles">
+             
+            <b className="TestimonialFooter">Discover More In Projects</b></div>
+           
+            
         </div> )
 }
 export default Skills;

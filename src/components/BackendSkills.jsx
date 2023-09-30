@@ -1,38 +1,36 @@
 import React from 'react';
 import SkillContent from './SkillsContent';
+import { useEffect, useState } from 'react';
 import "../css/SkillsSection.css";
 
 function BackendSkills() {
+
+    const [data, setData] = useState([]);
+    const fetchDataForBackSkills = () => {
+        fetch('http://localhost:8000/Skills/getAll')
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(data.data)
+            setData(data.data)})
+          .catch((error) => console.log(error));
+      };
+    
+      useEffect(() => {
+        fetchDataForBackSkills();
+      }, []);
+
+      const filteredData = data.filter((FrontSkill) => FrontSkill?.SkillType === 'Back');
+
+
     return (
         <div className="backend-skills">
-            <SkillContent
-                iconSrc="/Images/Backend/nodejs-svgrepo-com.svg"
-                skillName="NodeJS"
-            />
-            <SkillContent
-                iconSrc="/Images/Backend/nodejs-svgrepo-com.svg"
-                skillName="ExpressJS"
-            />
-            <SkillContent
-                iconSrc="/Images/Backend/mongodb-svgrepo-com.svg"
-                skillName="MongoDB"
-            />
-            <SkillContent
-                iconSrc="/Images/Backend/mongodb-svgrepo-com.svg"
-                skillName="Mongoose"
-            />
-            <SkillContent
-                iconSrc="/Images/Backend/php-svgrepo-com.svg"
-                skillName="PHP Larvel"
-            />
-            <SkillContent
-                iconSrc="/Images/Backend/mysql-svgrepo-com.svg"
-                skillName="My SQL"
-            />
-            <SkillContent
-                iconSrc="/Images/Backend/connectdevelop.svg"
-                skillName="Restful APIs"
-            />
+       {filteredData.map((BackSkill) => (
+        <SkillContent
+          iconSrc={BackSkill?.SkillImage}
+          skillName={BackSkill?.SkillDesc}
+        />
+      ))}
+           
         </div>
     );
 }

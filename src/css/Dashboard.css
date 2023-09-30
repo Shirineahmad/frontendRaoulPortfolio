@@ -14,25 +14,30 @@ grid-template-columns: repeat(12,1fr);
     background-color: white;
 }
 
-.DashLogInForm , .DashAboutForm{
+.DashLogInForm , .DashAboutForm , .DashHeroForm{
   padding-right: 80%;
   padding-top: 5%;
 }
 
-.DashLogInForm label , .DashAboutForm label , .DashContactInfoForm label{
+.DashLogInForm label , .DashAboutForm label , .DashContactInfoForm label ,.DashHeroForm label{
   color : black;
   font-size: medium;
 
 }
 
-.SubmitLogInForm , .SubmitAboutForm, .SubmitContactInfoForm{
+.SubmitLogInForm , .SubmitAboutForm, .SubmitContactInfoForm , .SubmitHeroForm{
   border: 1px solid black;
   background-color: gray ;
   color: white;
 }
 
-.DashLogInTable , .DashAboutTable , .DashContactTable, .DashContactInfoTable{
+.DashLogInTable , .DashAboutTable , .DashSkillsTable , .DashContactTable, .DashContactInfoTable , .DashHeroTable, .DashProjectTable{
   border: 1px solid black;
   margin-left: 3%;
   margin-top: 10%;
+}
+
+.DashHeroImage , .DashSkillImage , .DashProjectImage , .DashUserImage{
+  max-width: 50px;
+  max-height: 50px;
 }

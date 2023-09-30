@@ -1,38 +1,35 @@
 import React from 'react';
 import SkillContent from './SkillsContent';
+import { useEffect, useState } from 'react';
 import "../css/SkillsSection.css";
 
 function OtherSkills() {
+
+    const [data, setData] = useState([]);
+    const fetchDataForOtherSkills = () => {
+        fetch('http://localhost:8000/Skills/getAll')
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(data.data)
+            setData(data.data)})
+          .catch((error) => console.log(error));
+      };
+    
+      useEffect(() => {
+        fetchDataForOtherSkills();
+      }, []);
+
+      const filteredData = data.filter((FrontSkill) => FrontSkill?.SkillType === 'other');
+
     return (
         <div className="other-skills">
-            <SkillContent
-                iconSrc="/Images/Other/git-svgrepo-com.svg"
-                skillName="Git"
-            />
-            <SkillContent
-                iconSrc="/Images/Other/github-142-svgrepo-com.svg"
-                skillName="Github"
-            />
-            <SkillContent
-                iconSrc="/Images/Other/visual-studio-code-svgrepo-com.svg"
-                skillName="VS Code"
-            />
-            <SkillContent
-                iconSrc="/Images/Other/trello-svgrepo-com.svg"
-                skillName="Trello"
-            />
-            <SkillContent
-                iconSrc="/Images/Other/figma-svgrepo-com.svg"
-                skillName="Figma"
-            />
-            <SkillContent
-                iconSrc="/Images/Other/miro-svgrepo-com.svg"
-                skillName="Miro.com"
-            />
-            <SkillContent
-                iconSrc="/Images/Other/iteration_5398368.png"
-                skillName="Agile Methodology"
-            />
+        {filteredData.map((OtherSkill) => (
+        <SkillContent
+          iconSrc={OtherSkill?.SkillImage}
+          skillName={OtherSkill?.SkillDesc}
+        />
+      ))}
+            
         </div>
     );
 }
