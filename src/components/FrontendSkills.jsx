@@ -17,7 +17,7 @@ function FrontendSkills() {
         fetchDataForFrontSkills();
       }, []);
 
-      const filteredData = data.filter((FrontSkill) => FrontSkill?.SkillType === 'Front');
+      const filteredData = data.filter((FrontSkill) => FrontSkill?.SkillType === 'FrontEnd');
 
     return (
        <div className="frontend-skills">

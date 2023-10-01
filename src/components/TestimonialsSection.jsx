@@ -1,22 +1,21 @@
-import React, { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ReviewModal from './Modal';
 
 function Testimonials() {
-    const testimonialsData = [
-        {
-            imageSrc: '/Images/TestimonialsImages/Testimonial 1.jpg',
-            name: 'John Doe',
-            email: 'john@example.com',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elitkljljlkjlkjlkjlkjlkjlkjlkjlkjlkj.',
-        },
-        {
-            imageSrc: '/Images/TestimonialsImages/Testimonial 1.jpg',
-            name: 'Jane Smith',
-            email: 'jane@example.com',
-            description: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-        },
-       
-    ];
+    const [testimonialsData, setTestimonialsData] = useState([]);
+
+    const fetchDataForTestimonialSection = () => {
+        fetch('http://localhost:8000/Testimonials/getAll')
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(data.data)
+            setTestimonialsData(data.data)})
+          .catch((error) => console.log(error));
+      };
+    
+      useEffect(() => {
+        fetchDataForTestimonialSection();
+      }, []);
 
     const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -48,18 +47,18 @@ function Testimonials() {
                         <div>
                             <img
                                 className="testimonial-image"
-                                src={testimonialsData[currentIndex].imageSrc}
+                                src={`data:image/png;base64,${testimonialsData[currentIndex]?.UserImage}`}
                                 alt=""
                             />
                         </div>
                         <div className="testimonial-author">
-                            <p>{testimonialsData[currentIndex].name}</p>
-                            <p>{testimonialsData[currentIndex].email}</p>
+                            <p>{testimonialsData[currentIndex]?.Name}</p>
+                            <p>{testimonialsData[currentIndex]?.Email}</p>
                         </div>
                     </div>
                     <div>
                         <p className="testimonial-description">
-                            {testimonialsData[currentIndex].description}
+                            {testimonialsData[currentIndex]?.Review}
                         </p>
                     </div>
                 </div>

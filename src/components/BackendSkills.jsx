@@ -19,7 +19,7 @@ function BackendSkills() {
         fetchDataForBackSkills();
       }, []);
 
-      const filteredData = data.filter((FrontSkill) => FrontSkill?.SkillType === 'Back');
+      const filteredData = data.filter((FrontSkill) => FrontSkill?.SkillType === 'BackEnd');
 
 
     return (

@@ -5,6 +5,9 @@ const DashSkills = () => {
 
   const [data, setData] = useState([]);
   const [errorMessage, setErrorMessage] = useState('');
+  const [SkillType, setSkillType] = useState('');
+  const [SkillDesc, setSkillDesc] = useState('');
+  const [image, setSkillImage] = useState(null); 
 
 
   const fetchDashSkillsData = () => {
@@ -41,11 +44,54 @@ const DashSkills = () => {
   };
 
 
-  const filteredFrontData = data.filter((FrontSkill) => FrontSkill?.SkillType === 'Front');
+  const filteredFrontData = data.filter((FrontSkill) => FrontSkill?.SkillType === 'FrontEnd');
 
-  const filteredBackData = data.filter((FrontSkill) => FrontSkill?.SkillType === 'Back');
+  const filteredBackData = data.filter((FrontSkill) => FrontSkill?.SkillType === 'BackEnd');
 
-  const filteredOtherData = data.filter((FrontSkill) => FrontSkill?.SkillType === 'other');
+  const filteredOtherData = data.filter((FrontSkill) => FrontSkill?.SkillType === 'Other');
+
+  const handleSkillsInputs = async (e) => {
+    e.preventDefault();
+   
+  
+    const formData = new FormData();
+    formData.append('SkillType', SkillType);
+    formData.append('SkillDesc', SkillDesc);
+    formData.append('image', image);
+  
+    try {
+      const response = await fetch('http://localhost:8000/Skills/add', {
+        method: 'POST',
+        body: formData,
+      });
+  
+      if (!response.ok) {
+        console.error('HTTP error! Status:', response.status);
+        console.error('Response:', response);
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+  
+      const data = await response.json();
+      if (data.success) {
+        console.log('Skill added successfully:', data.data);
+        setErrorMessage('Data added successfully.');
+        setSkillType('');
+        setSkillDesc('');
+        setSkillImage(null);
+        setTimeout(() => {
+          setErrorMessage('');
+        }, 10000);
+      } else {
+        console.error('Error adding skills:', data.message);
+        setErrorMessage('Error adding Skill: ' + data.message);
+      }
+    } catch (error) {
+      console.error('An error occurred while adding Skill:', error);
+      setErrorMessage('An error occurred while adding Skill.');
+    }
+  };
+
+ 
   return (
     <div>
       <h1 style={{ textAlign: "center" }}>Skills</h1>
@@ -115,6 +161,41 @@ const DashSkills = () => {
           ))}
 
          </table>
+
+         <form className='DashSkillsForm' onSubmit={handleSkillsInputs} encType='multipart/form-data'>
+         <label htmlFor='SkillType'>Skill Type</label>
+          <select
+            required={true}
+            value={SkillType}
+            onChange={(e) => setSkillType(e.target.value)}
+          >
+            <option value='FrontEnd'>FrontEnd </option>
+            <option value='BackEnd'> BackEnd </option>
+            <option value='Other'>Other</option>
+          </select>
+        <label htmlFor='SkillDesc'>Skill Description</label>
+        <input
+          type='text'
+          required={true}
+          placeholder='Enter Skill Desc'
+          value={SkillDesc}
+          onChange={(e) => setSkillDesc(e.target.value)}
+        />
+        <label htmlFor='SkillImage'>Skill Image</label>
+        <input
+          type='file'
+          required={true}
+          accept='image/*'
+          onChange={(e) => {
+            const file = e.target.files[0];
+            if (file) {
+              setSkillImage(file); 
+            }
+          }}
+        />
+        <br />
+        <input type='submit' value='Submit' className='SubmitSkillForm' />
+      </form>
     </div>
   );
 }

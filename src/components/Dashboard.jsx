@@ -9,21 +9,10 @@ import Projects from "../pages/DashProjects";
 import DashSkills from "../pages/DashSkills";
 import ContactInfo from "../pages/DashContactInfo";
 import "../css/Dashboard.css";
-import { useState, useEffect } from "react";
+
 
 function Dashboard() {
-  const [contactInfoDesc, SetContactInfoDesc] = useState({});
-  const fetchData = () => {
-    fetch("http://localhost:5000/api/get/contactInfoDesc")
-      .then((response) => response.json())
-      .then((contactInfoDesc) => SetContactInfoDesc(contactInfoDesc.data))
-
-      .catch((error) => console.log(error));
-  };
-  console.log(contactInfoDesc);
-  useEffect(() => {
-    fetchData();
-  }, []);
+ 
 
   return (
       <div className="Container">

@@ -4,8 +4,8 @@ import DashHeroTable from './DashHeroTable';
 const Heros = () => {
   const [data, setData] = useState([]);
   const [errorMessage, setErrorMessage] = useState('');
-  const [smallDesc, setSmallDesc] = useState('');
-  const [heroImage, setHeroImage] = useState('');
+  const [SmallDesc, setSmallDesc] = useState('');
+  const [image, setHeroImage] = useState(null); 
 
   const fetchDashHeroData = () => {
     fetch('http://localhost:8000/Hero/getAll')
@@ -35,19 +35,19 @@ const Heros = () => {
     setData([]);
   };
 
-  const handleHeroInputs = async () => {
+  const handleHeroInputs = async (e) => {
+    e.preventDefault();
     if (data.length > 0) {
-      setErrorMessage('You should delete the old data before inserting a new one.');
+      setErrorMessage('You should delete the old data before inserting new one.');
       setTimeout(() => {
         setErrorMessage('');
       }, 10000);
       return;
     }
   
-    
     const formData = new FormData();
-    formData.append('SmallDesc', smallDesc);
-    formData.append('HeroImage', heroImage);
+    formData.append('SmallDesc', SmallDesc);
+    formData.append('image', image);
   
     try {
       const response = await fetch('http://localhost:8000/Hero/add', {
@@ -56,74 +56,78 @@ const Heros = () => {
       });
   
       if (!response.ok) {
+        console.error('HTTP error! Status:', response.status);
+        console.error('Response:', response);
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
   
-      const responseData = await response.json();
-      console.log(responseData);
-      setErrorMessage('Data added successfully.');
-      fetchDashHeroData(); 
-      setSmallDesc('');
-      setHeroImage(null); 
-      setTimeout(() => {
-        setErrorMessage('');
-      }, 10000);
+      const data = await response.json();
+      if (data.success) {
+        console.log('Hero added successfully:', data.data);
+        setErrorMessage('Data added successfully.');
+        setSmallDesc('');
+        setHeroImage(null);
+        setTimeout(() => {
+          setErrorMessage('');
+        }, 10000);
+      } else {
+        console.error('Error adding hero:', data.message);
+        setErrorMessage('Error adding hero: ' + data.message);
+      }
     } catch (error) {
-      console.error(error);
+      console.error('An error occurred while adding hero:', error);
+      setErrorMessage('An error occurred while adding hero.');
     }
   };
-  
 
   return (
-      <div>
-          <h1 style={{textAlign:'center'}}>Hero</h1>
-          {errorMessage && <p>{errorMessage}</p>}
+    <div>
+      <h1 style={{ textAlign: 'center' }}>Hero</h1>
+      {errorMessage && <p>{errorMessage}</p>}
 
-          <table className='DashHeroTable'>
-          <tr>
-            <th>HeroDesc</th>
-            <th>HeroImage</th>
-        
-          </tr>
-    
-       
+      <table className='DashHeroTable'>
+        <tr>
+          <th>HeroDesc</th>
+          <th>HeroImage</th>
+        </tr>
+
+        {data.map((hero) => (
           <DashHeroTable
-            id={data[0]?._id}
-            SmallDesc={data[0]?.SmallDesc}
-            HeroImage={data[0]?.HeroImage}
+            key={hero._id}
+            id={hero._id}
+            SmallDesc={hero.SmallDesc}
+            HeroImage={hero.HeroImage}
             onDelete={handleDelete}
-        
-       
-          />   </table>
+          />
+        ))}
+      </table>
 
-      <form className='DashHeroForm' onSubmit={handleHeroInputs}>
-        <label htmlFor="SmallDesc">Small Description</label>
+      <form className='DashHeroForm' onSubmit={handleHeroInputs} encType='multipart/form-data'>
+        <label htmlFor='SmallDesc'>Small Description</label>
         <input
-          type="text"
+          type='text'
           required={true}
           placeholder='Enter Small Description'
-          value={smallDesc}
+          value={SmallDesc}
           onChange={(e) => setSmallDesc(e.target.value)}
         />
-        <label htmlFor="HeroImage">Hero Image</label>
+        <label htmlFor='HeroImage'>Hero Image</label>
         <input
-          type="file"
+          type='file'
           required={true}
-          accept="image/*"
-          onChange={(e) => setHeroImage(e.target.files[0])}
+          accept='image/*'
+          onChange={(e) => {
+            const file = e.target.files[0];
+            if (file) {
+              setHeroImage(file); 
+            }
+          }}
         />
         <br />
-        <input type="submit" value="Submit" className="SubmitHeroForm" />
+        <input type='submit' value='Submit' className='SubmitHeroForm' />
       </form>
-        
-          
-        
-    
-
-
-
     </div>
-  )
-}
+  );
+};
 
-export default Heros
+export default Heros;

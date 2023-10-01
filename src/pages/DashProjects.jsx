@@ -5,6 +5,12 @@ const MyProjects = () => {
 
   const [data, setData] = useState([]);
   const [errorMessage, setErrorMessage] = useState('');
+  const [ProjectName, setProjectName] = useState('');
+  const [ProjectDesc, setProjectDesc] = useState('');
+  const [TechUsed, setTechUsed] = useState('');
+  const [DemoLink, setDemoLink] = useState('');
+  const [RepoLink, setRepoLink] = useState('');
+  const [image, setProjectImage] = useState(null); 
 
   const fetchDashProjectsData = () => {
     fetch('http://localhost:8000/MyProjects/getAll')
@@ -15,6 +21,9 @@ const MyProjects = () => {
       })
       .catch((error) => console.log(error));
   };
+  useEffect(() => {
+    fetchDashProjectsData();
+  }, []);
 
   const handleDelete = async (id) => {
     
@@ -35,9 +44,60 @@ const MyProjects = () => {
     }, 10000);
   };
 
-  useEffect(() => {
-    fetchDashProjectsData();
-  }, []);
+  const handleProjectInputs = async (e) => {
+    e.preventDefault();
+    if (data.length > 8) {
+      setErrorMessage('You can max add 9 projects');
+      setTimeout(() => {
+        setErrorMessage('');
+      }, 10000);
+      return;
+    }
+  
+    const formData = new FormData();
+    formData.append('ProjectName', ProjectName);
+    formData.append('ProjectDesc', ProjectDesc);
+    formData.append('TechUsed', TechUsed);
+    formData.append('DemoLink', DemoLink);
+    formData.append('RepoLink', RepoLink);
+    formData.append('image', image);
+  
+    try {
+      const response = await fetch('http://localhost:8000/MyProjects/add', {
+        method: 'POST',
+        body: formData,
+      });
+  
+      if (!response.ok) {
+        console.error('HTTP error! Status:', response.status);
+        console.error('Response:', response);
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+  
+      const data = await response.json();
+      if (data.success) {
+        console.log('project added successfully:', data.data);
+        setErrorMessage('Data added successfully.');
+        setProjectName('');
+        setProjectDesc('');
+        setTechUsed('');
+        setDemoLink('');
+        setRepoLink('');
+        setProjectImage(null);
+        setTimeout(() => {
+          setErrorMessage('');
+        }, 10000);
+      } else {
+        console.error('Error adding project:', data.message);
+        setErrorMessage('Error adding Project: ' + data.message);
+      }
+    } catch (error) {
+      console.error('An error occurred while adding Project:', error);
+      setErrorMessage('An error occurred while adding Project.');
+    }
+  };
+
+ 
 
   return (
     <div>
@@ -67,6 +127,62 @@ const MyProjects = () => {
           />
         ))}
         </table>
+        <form className='DashProjectForm' onSubmit={handleProjectInputs} encType='multipart/form-data'>
+        <label htmlFor='ProjectName'>Project Name</label>
+        <input
+          type='text'
+          required={true}
+          placeholder='Enter Project Name'
+          value={ProjectName}
+          onChange={(e) => setProjectName(e.target.value)}
+        />
+        <label htmlFor='ProjectDesc'>Project Description</label>
+        <input
+          type='text'
+          required={true}
+          placeholder='Enter Project Desc'
+          value={ProjectDesc}
+          onChange={(e) => setProjectDesc(e.target.value)}
+        />
+        <label htmlFor='TechUsed'>TechUsed</label>
+        <input
+          type='text'
+          required={true}
+          placeholder='Enter The TechUsed'
+          value={TechUsed}
+          onChange={(e) => setTechUsed(e.target.value)}
+        />
+        <label htmlFor='DemoLink'>DemoLink</label>
+        <input
+          type='text'
+          required={true}
+          placeholder='Enter DemoLink'
+          value={DemoLink}
+          onChange={(e) => setDemoLink(e.target.value)}
+        />
+        <label htmlFor='RepoLink'>RepoLink</label>
+        <input
+          type='text'
+          required={true}
+          placeholder='Enter RepoLink'
+          value={RepoLink}
+          onChange={(e) => setRepoLink(e.target.value)}
+        />
+        <label htmlFor='ProjectImage'>Project Image</label>
+        <input
+          type='file'
+          required={true}
+          accept='image/*'
+          onChange={(e) => {
+            const file = e.target.files[0];
+            if (file) {
+              setProjectImage(file); 
+            }
+          }}
+        />
+        <br />
+        <input type='submit' value='Submit' className='SubmitProjectForm' />
+      </form>
     </div>
   );
 }

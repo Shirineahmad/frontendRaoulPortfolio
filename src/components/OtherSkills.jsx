@@ -19,7 +19,7 @@ function OtherSkills() {
         fetchDataForOtherSkills();
       }, []);
 
-      const filteredData = data.filter((FrontSkill) => FrontSkill?.SkillType === 'other');
+      const filteredData = data.filter((FrontSkill) => FrontSkill?.SkillType === 'Other');
 
     return (
         <div className="other-skills">

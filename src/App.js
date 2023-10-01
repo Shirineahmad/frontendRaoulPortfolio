@@ -6,7 +6,7 @@ import RaoulPortfolio from "./components/RaoulPortfolio";
 import Login from "./components/Login";
 import Dashboard from "./components/Dashboard";
 import { Routes, Route } from "react-router-dom";
-import DashSkills from "./pages/DashSkills";
+
 function App() {
   return (
     <div className="App">
