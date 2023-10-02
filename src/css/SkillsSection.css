@@ -49,3 +49,30 @@
     font-size: x-large;
     color: #6D78DD;
 }
+
+/* Responsive */
+@media (max-width: 500px) {
+    .skills-grid {
+        display: block;
+        margin-left: 40px;
+        margin-right: 40px;
+    }
+
+    .skill-title {
+        width: 70%;
+        margin: 0 15% 0;
+    }
+
+    .skills-content {
+        display: flex;
+        flex-direction: row;
+        margin-left: 30%;
+    }
+
+    .frontend-skills,
+    .backend-skills,
+    .other-skills {
+        margin-top: 20px;
+        margin-bottom: 50px;
+    }
+}

@@ -72,7 +72,10 @@ button {
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    background-color: #007bff;
+    background: rgb(91, 174, 253);
+    background: linear-gradient(180deg,
+            rgba(91, 174, 253, 1) 0%,
+            rgba(109, 120, 221, 1) 100%);
     color: #fff;
     border: none;
     padding: 10px 20px;
@@ -80,43 +83,49 @@ button {
     margin-left: 615px;
 }
 
-.leave-review {
+.transition-footer {
     text-align: center;
-}
-
-.submit-button {
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-}
-
-.submit-button:hover {
-    background-color: #0056b3;
-}
-
-.overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 30%;
-    height: 30%;
-    background-color: rgba(0, 0, 0, 0.7);
-    justify-content: center;
-    align-items: center;
-    margin-left: 470px;
-    z-index: 1;
+    color: #6D78DD;
+    margin-top: 20px;
+    font-size: larger;
+    font-weight: bold;
 }
 
 .popup {
-    background-color: #fff;
-    padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 40%;
+    background: rgb(91, 174, 253);
+    background: linear-gradient(180deg,
+            rgba(91, 174, 253, 1) 0%,
+            rgba(109, 120, 221, 1) 100%);
+    width: 25%;
+    height: 75%;
+    padding: 0px;
     border-radius: 5px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    align-items: center;
+}
+
+.popup-inner {
+    padding-left: 80px;
+    padding-top: 20px;
+}
+
+.leave-review {
+    color: white;
+    margin-bottom: 20px;
+}
+
+.send-button {
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background-color: transparent;
+    color: #fff;
+    border: 1px solid white;
+    padding: 10px 20px;
+    border-radius: 5px;
 }
 
 .close {
@@ -124,4 +133,37 @@ button {
     top: 10px;
     right: 10px;
     cursor: pointer;
+    background-color: transparent;
+    color: white;
+}
+
+.title-form {
+    color: white;
+    margin-top: 20px;
+}
+
+.input-form {
+    border-radius: 5px;
+    border: none;
+    margin-bottom: 20px;
+    margin-top: 8px;
+    width: 70%;
+    height: 30px;
+}
+
+.input-form-image {
+    border-radius: 5px;
+    border: none;
+    margin-bottom: 20px;
+    margin-top: 8px;
+    color: white;
+}
+
+.input-form-review {
+    border-radius: 5px;
+    border: none;
+    margin-bottom: 20px;
+    margin-top: 8px;
+    width: 70%;
+    height: 80px
 }
