@@ -51,7 +51,7 @@ const Testimonial = () => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ approve: newApproveValue }),
-      credentials: 'include',
+      
     });
   
     if (!response.ok) {

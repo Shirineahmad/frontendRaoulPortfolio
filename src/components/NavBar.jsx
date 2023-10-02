@@ -17,15 +17,16 @@ const NavBar = () => {
         <FaBars className="Fabars" />
       </button>
       <div className="headerlogo">
-      <a href="#"><img src="/Images/logo-removebg.png" alt="Logo"/></a>
+      <a href="#"><img src="/Images/logo-removebg.png" alt="Logo" /></a>
       </div>
 
      
       <nav  className="header-nav"ref={navRef}>
-        <a className="header-a" href="/#">Testimonials</a>
-      <a className="header-a"  href="/#MainFooter">Contact Me</a>
-      <a className="header-a"  href="/#">My Skills</a>
       <a className="header-a"  href="/#AboutMe-void">About me</a>
+      <a className="header-a"  href="/#ProjectCarousel-wrapper">MyProjects</a>
+      <a className="header-a"  href="/#MySkills">My Skills</a>
+      <a className="header-a" href="/#TestimonialSection">Testimonials</a>
+      <a className="header-a"  href="/#MainFooter">Contact Me</a>
         <button className="nav-btn1 nav-close-btn" onClick={showNavBar}>
           <FaTimes />
         </button>

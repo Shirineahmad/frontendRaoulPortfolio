@@ -5,7 +5,7 @@ const DashSkills = () => {
 
   const [data, setData] = useState([]);
   const [errorMessage, setErrorMessage] = useState('');
-  const [SkillType, setSkillType] = useState('');
+  const [SkillType, setSkillType] = useState('FrontEnd');
   const [SkillDesc, setSkillDesc] = useState('');
   const [image, setSkillImage] = useState(null); 
 
