@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import DashContactInfoTable from './DashContactInfoTable';
-
+import "../css/DashContactInfo.css";
 
 
 function ContactInfo() {

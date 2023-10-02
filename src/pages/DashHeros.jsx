@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import DashHeroTable from './DashHeroTable';
+import "../css/DashHero.css";
+
 
 const Heros = () => {
   const [data, setData] = useState([]);

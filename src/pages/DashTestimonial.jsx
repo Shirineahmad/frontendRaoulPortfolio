@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import DashTestimonialsTable from './DashTestimonialsTable';
+import "../css/DashTestimonial.css";
 
 const Testimonial = () => {
 

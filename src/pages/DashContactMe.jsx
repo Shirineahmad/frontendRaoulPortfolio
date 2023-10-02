@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import DashContactTable from './DashContactTable';
+import "../css/DashContactMe.css";
 
 const ContactMe = () => {
   const [data, setData] = useState([]);

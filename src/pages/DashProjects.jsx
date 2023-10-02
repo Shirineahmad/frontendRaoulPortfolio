@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import DashProjectTable from './DashProjectTable';
+import "../css/DashProjects.css";
 
 const MyProjects = () => {
 

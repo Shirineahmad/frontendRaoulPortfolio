@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import DashLogInTable from './DashLogInTable';
+import "../css/DashLogIn.css";
+
 
 const Login = () => {
   const [data, setData] = useState([]);

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import DashAboutTable from './DashAboutTable';
+import "../css/DashSkill.css";
 
 const About = () => {
   const [data, setData] = useState([]);
