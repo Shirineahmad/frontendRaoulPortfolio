@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import SkillsSection from './components/SkillsSection';
-import TestimonialPopup from './components/TestimonialPopup';
+import React from 'react';
+import Skills from './components/Skills';
+import Testimonials from './components/TestimonialsSection';
+import './css/Testimonials.css';
 
 function App() {
 
   return (
     <div>
-      <SkillsSection />
-      <TestimonialPopup />
+     
     </div>
   );
 }

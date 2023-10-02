@@ -1,6 +1,6 @@
 import React from 'react';
 import SkillContent from './SkillsContent';
-
+import "../css/SkillsSection.css";
 function FrontendSkills() {
     return (
         <div className="frontend-skills">

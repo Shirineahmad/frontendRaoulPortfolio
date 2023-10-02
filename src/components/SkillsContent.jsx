@@ -1,5 +1,5 @@
 import React from 'react';
-
+import "../css/SkillsSection.css";
 function SkillContent({ iconSrc, skillName }) {
   return (
     <div className="skills-content">

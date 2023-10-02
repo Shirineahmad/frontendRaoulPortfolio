@@ -1,5 +1,6 @@
 import React from 'react';
 import SkillContent from './SkillsContent';
+import "../css/SkillsSection.css";
 
 function BackendSkills() {
     return (
