@@ -46,9 +46,9 @@ const DashSkills = () => {
 
   const filteredFrontData = data.filter((FrontSkill) => FrontSkill?.SkillType === 'FrontEnd');
 
-  const filteredBackData = data.filter((FrontSkill) => FrontSkill?.SkillType === 'BackEnd');
+  const filteredBackData = data.filter((BackSkill) => BackSkill?.SkillType === 'BackEnd');
 
-  const filteredOtherData = data.filter((FrontSkill) => FrontSkill?.SkillType === 'Other');
+  const filteredOtherData = data.filter((OtherSkill) => OtherSkill?.SkillType === 'Other');
 
   const handleSkillsInputs = async (e) => {
     e.preventDefault();
