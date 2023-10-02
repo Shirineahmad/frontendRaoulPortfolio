@@ -46,13 +46,13 @@
 .skills {
     padding-top: 15px;
 }
+.IntroToProjects{
+    color: #6D78DD;;
+    font-size: 20px;
 
-.transition-project {
-    margin-top: 50px;
-    text-align: center;
-    font-size: x-large;
-    color: #6D78DD;
 }
+
+
 .frontend-skills,
   .backend-skills,
   .other-skills {

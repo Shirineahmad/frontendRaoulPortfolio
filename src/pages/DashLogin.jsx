@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import DashLogInTable from './DashLogInTable';
 import "../css/DashLogIn.css";
 
-
 const Login = () => {
   const [data, setData] = useState([]);
   const [AdminUserName, setUsername] = useState('');
@@ -15,6 +14,10 @@ const Login = () => {
       .then((data) => {
         console.log(data.data);
         setData(data.data);
+        if (data.data.length === 1) {
+          setUsername(data.data[0].AdminUserName);
+          setPassword(data.data[0].AdminPass);
+        }
       })
       .catch((error) => console.log(error));
   };
@@ -23,24 +26,22 @@ const Login = () => {
     fetchDashLogInData();
   }, []);
 
-  const handleLogInInputs = async () => {
-    if (data.length > 0) {
-      setErrorMessage('You should delete previous credentials before adding new ones.');
-      setTimeout(() => {
-        setErrorMessage(''); 
-      }, 10000); 
+  const handleUpdate = async () => {
+    
+    if (data.length !== 1) {
+      setErrorMessage('No data to update.');
       return;
     }
 
-    const LogInDetails = { AdminUserName, AdminPass };
-    console.log(LogInDetails);
+    const idToUpdate = data[0]._id;
+    const updatedLogInDetails = { AdminUserName, AdminPass };
 
-    const response = await fetch('http://localhost:8000/LogIn/add', {
-      method: 'POST',
+    const response = await fetch(`http://localhost:8000/LogIn/update/${idToUpdate}`, {
+      method: 'PUT', 
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(LogInDetails),
+      body: JSON.stringify(updatedLogInDetails),
     });
 
     if (!response.ok) {
@@ -48,29 +49,11 @@ const Login = () => {
     }
 
     console.log(response);
-    const logInData = await response.json();
-    console.log(logInData);
-    setErrorMessage('Credentials added successfully.');
-    setUsername('');
-    setPassword('');
+    setErrorMessage('Credentials updated successfully.');
     setTimeout(() => {
-      setErrorMessage(''); 
-    }, 10000); 
+      setErrorMessage('');
+    }, 10000);
   };
-  const handleDelete = async (idToDelete) => {
-    const response = await fetch(`http://localhost:8000/LogIn/delete/${idToDelete}`, {
-      method: 'DELETE',
-    });
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
-    }
-
-    console.log(response);
-    setErrorMessage('Credentials deleted successfully.');
-    setData([]);
-  };
-
 
   return (
     <div>
@@ -78,34 +61,40 @@ const Login = () => {
       {errorMessage && <p>{errorMessage}</p>}
 
       <table className='DashLogInTable'>
+        
           <tr>
             <th>UserName</th>
             <th>Password</th>
-        
           </tr>
-    
-       
+        
+      
           <DashLogInTable
             id={data[0]?._id}
             UserName={data[0]?.AdminUserName}
             Password={data[0]?.AdminPass}
-            onDelete={handleDelete}
-       
           />
-        
-          
-        
+       
       </table>
 
-      <form className='DashLogInForm' onSubmit={handleLogInInputs}>
+      <form className='DashLogInForm' onSubmit={handleUpdate}>
         <label htmlFor="UserName">Username</label>
-        <input type="text" required={true} placeholder='Enter Username'
-          value={AdminUserName} onChange={(e) => setUsername(e.target.value)}></input>
+        <input
+          type="text"
+          required={true}
+          placeholder='Enter Username'
+          value={AdminUserName}
+          onChange={(e) => setUsername(e.target.value)}
+        />
         <label htmlFor="Password">Password</label>
-        <input type="password" required={true} placeholder='Enter Password'
-          value={AdminPass} onChange={(e) => setPassword(e.target.value)}></input>
+        <input
+          type="password"
+          required={true}
+          placeholder='Enter Password'
+          value={AdminPass}
+          onChange={(e) => setPassword(e.target.value)}
+        />
         <br />
-        <input type="submit" value="Submit" className="SubmitLogInForm" />
+        <input type="submit" value="Update" className="SubmitLogInForm" />
       </form>
     </div>
   );

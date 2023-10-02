@@ -25,7 +25,7 @@ function Skills() {
        
         <div className="TestimonialTitles">
              
-            <b className="TestimonialFooter">Discover More In Projects</b></div>
+            <b className="IntroToProjects">Discover More In Projects</b></div>
            
             
         </div> )

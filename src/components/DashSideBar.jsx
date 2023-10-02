@@ -21,7 +21,7 @@ const SideBar = () => {
      
       <div className="nav">
         {isMenuClicked ? (
-          <BiLogOut className="dashboradLogout" />
+          <Link to="/"><BiLogOut className="dashboradLogout" /></Link>
         ) : (
           <div className="burger-menu" onClick={updateMenu}>
             <div className={burger_class}></div>

@@ -21,7 +21,7 @@ function SkillsSection() {
                     <OtherSkills />
                 </div>
             </div>
-            <p className="transition-project">Discover More in Projects</p>
+            
         </div>
     );
 }

@@ -226,12 +226,27 @@ a {
 @media screen and (max-width: 500px) {
 
 	.AboutMe-void{
-		scale: 0.7;
+		scale: 0.95;
+	
 	}
 	
+	.AboutMeSmallContainer{
+		scale:1.5;
+		font-size: xx-large;
+	
+	}
+	.model-name{
+		font-size: 2.5vw;
+		width:30px;
+		padding-right: 10%;
+	}
+
+	.model-desc{
+		font-size: 1.5vw;
+	}
 }
 
 @media screen and (max-width: 768px) {
 		.AboutMe-void{
-			scale: 0.7;
+			scale: 0.95;
 		}}

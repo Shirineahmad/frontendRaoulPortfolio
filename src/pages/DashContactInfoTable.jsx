@@ -1,10 +1,9 @@
 import React from 'react';
 
 
-const DashContactInfoTable = ({  id, onDelete, SmallDesc , PhoneNb, Email, InLink, FbLink, InstagramLink }) => {
+const DashContactInfoTable = ({  id, SmallDesc , PhoneNb, Email, InLink, FbLink, InstagramLink }) => {
    
-  const handleDeleteClick = () => {
-    onDelete(id); };
+  
   return (
     <tr>
         <td> {SmallDesc} </td>
@@ -13,9 +12,7 @@ const DashContactInfoTable = ({  id, onDelete, SmallDesc , PhoneNb, Email, InLin
         <td> {InLink} </td>
         <td> {FbLink} </td>
         <td> {InstagramLink} </td>
-        <td>
-        <button onClick={handleDeleteClick} >Delete</button>
-         </td>
+        
     </tr>
   );
 };

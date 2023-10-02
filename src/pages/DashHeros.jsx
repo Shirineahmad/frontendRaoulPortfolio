@@ -1,84 +1,66 @@
 import React, { useEffect, useState } from 'react';
 import DashHeroTable from './DashHeroTable';
-import "../css/DashHero.css";
-
+import '../css/DashHero.css';
 
 const Heros = () => {
-  const [data, setData] = useState([]);
+  const [heroData, setHeroData] = useState({
+    _id: '',
+    SmallDesc: '',
+    image: '',
+  });
   const [errorMessage, setErrorMessage] = useState('');
   const [SmallDesc, setSmallDesc] = useState('');
-  const [image, setHeroImage] = useState(null); 
+  const [image, setHeroImage] = useState(null);
 
   const fetchDashHeroData = () => {
     fetch('http://localhost:8000/Hero/getAll')
       .then((response) => response.json())
       .then((data) => {
         console.log(data.data);
-        setData(data.data);
+        if (data.data.length === 1) {
+          const hero = data.data[0];
+          setHeroData(hero);
+          setSmallDesc(hero.SmallDesc);
+        }
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        console.error('Error fetching data:', error);
+      });
   };
 
   useEffect(() => {
     fetchDashHeroData();
   }, []);
 
-  const handleDelete = async (idToDelete) => {
-    const response = await fetch(`http://localhost:8000/Hero/delete/${idToDelete}`, {
-      method: 'DELETE',
-    });
+  const handleUpdate = async (e) => {
+    e.preventDefault(); 
 
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
-    }
+    const idToUpdate = heroData._id;
+    const formData = new FormData();
+    formData.append('SmallDesc', SmallDesc);
+    formData.append('HeroImage', image);
 
-    console.log(response);
-    setErrorMessage('Data deleted successfully.');
-    setData([]);
-  };
+    try {
+      const response = await fetch(`http://localhost:8000/Hero/update/${idToUpdate}`, {
+        method: 'PUT',
+        body: formData,
+      });
 
-  const handleHeroInputs = async (e) => {
-    e.preventDefault();
-    if (data.length > 0) {
-      setErrorMessage('You should delete the old data before inserting new one.');
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+    
+      fetchDashHeroData();
+
+      console.log('Update successful');
+      setErrorMessage('Credentials updated successfully.');
       setTimeout(() => {
         setErrorMessage('');
       }, 10000);
-      return;
-    }
-  
-    const formData = new FormData();
-    formData.append('SmallDesc', SmallDesc);
-    formData.append('image', image);
-  
-    try {
-      const response = await fetch('http://localhost:8000/Hero/add', {
-        method: 'POST',
-        body: formData,
-      });
-  
-      if (!response.ok) {
-        console.error('HTTP error! Status:', response.status);
-        console.error('Response:', response);
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-  
-      const data = await response.json();
-      if (data.success) {
-        console.log('Hero added successfully:', data.data);
-        setErrorMessage('Data added successfully.');
-        setSmallDesc('');
-        setHeroImage(null);
-        setTimeout(() => {
-          setErrorMessage('');
-        }, 10000);
-      } else {
-        console.error('Error adding hero:', data.message);
-        setErrorMessage('Error adding hero: ' + data.message);
-      }
     } catch (error) {
-      console.error('An error occurred while adding hero:', error);
-      setErrorMessage('An error occurred while adding hero.');
+      console.error('Error updating data:', error);
+      setErrorMessage('An error occurred while updating.');
     }
   };
 
@@ -88,23 +70,23 @@ const Heros = () => {
       {errorMessage && <p>{errorMessage}</p>}
 
       <table className='DashHeroTable'>
-        <tr>
-          <th>HeroDesc</th>
-          <th>HeroImage</th>
-        </tr>
-
-        {data.map((hero) => (
+        <thead>
+          <tr>
+            <th>HeroDesc</th>
+            <th>HeroImage</th>
+          </tr>
+        </thead>
+        <tbody>
           <DashHeroTable
-            key={hero._id}
-            id={hero._id}
-            SmallDesc={hero.SmallDesc}
-            HeroImage={hero.HeroImage}
-            onDelete={handleDelete}
+            key={heroData._id}
+            id={heroData._id}
+            SmallDesc={heroData.SmallDesc}
+            HeroImage={heroData.HeroImage}
           />
-        ))}
+        </tbody>
       </table>
 
-      <form className='DashHeroForm' onSubmit={handleHeroInputs} encType='multipart/form-data'>
+      <form className='DashHeroForm' onSubmit={handleUpdate} encType='multipart/form-data'>
         <label htmlFor='SmallDesc'>Small Description</label>
         <input
           type='text'
@@ -121,7 +103,7 @@ const Heros = () => {
           onChange={(e) => {
             const file = e.target.files[0];
             if (file) {
-              setHeroImage(file); 
+              setHeroImage(file);
             }
           }}
         />

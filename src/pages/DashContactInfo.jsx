@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import DashContactInfoTable from './DashContactInfoTable';
 import "../css/DashContactInfo.css";
 
-
 function ContactInfo() {
   const [data, setData] = useState([]);
   const [SmallDesc, setDesc] = useState('');
@@ -19,6 +18,17 @@ function ContactInfo() {
       .then((data) => {
         console.log(data.data);
         setData(data.data);
+
+        // Set the input field values using the fetched data
+        if (data.data.length === 1) {
+          const fetchedData = data.data[0];
+          setDesc(fetchedData.SmallDesc);
+          setPhone(fetchedData.PhoneNb);
+          setEmail(fetchedData.Email);
+          setLinkedIn(fetchedData.InLink);
+          setFb(fetchedData.FbLink);
+          setInstagram(fetchedData.InstagramLink);
+        }
       })
       .catch((error) => console.log(error));
   };
@@ -27,24 +37,22 @@ function ContactInfo() {
     fetchDashContactInfoData();
   }, []);
 
-  const handleContactInfoInputs = async () => {
-    if (data.length > 0) {
-      setErrorMessage('You should delete previous Info before adding new ones.');
-      setTimeout(() => {
-        setErrorMessage(''); 
-      }, 10000); 
+  const handleUpdate = async () => {
+    
+    if (data.length !== 1) {
+      setErrorMessage('No data to update.');
       return;
     }
 
-    const ContactInfoDetails = { SmallDesc, PhoneNb, Email, InLink, FbLink, InstagramLink };
-    console.log(ContactInfoDetails);
+    const idToUpdate = data[0]._id;
+    const updatedContactInfoDetails = { SmallDesc, PhoneNb, Email, InLink, FbLink, InstagramLink  };
 
-    const response = await fetch('http://localhost:8000/ContactInfoAndDesc/add', {
-      method: 'POST',
+    const response = await fetch(`http://localhost:8000/ContactInfoAndDesc/update/${idToUpdate}`, {
+      method: 'PUT', 
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(ContactInfoDetails),
+      body: JSON.stringify(updatedContactInfoDetails),
     });
 
     if (!response.ok) {
@@ -52,36 +60,11 @@ function ContactInfo() {
     }
 
     console.log(response);
-    const ContactInfoData = await response.json();
-    console.log(ContactInfoData);
-    setErrorMessage('Info added successfully.');
-    setDesc('');
-    setPhone('');
-    setEmail('');
-    setLinkedIn('');
-    setFb('');
-    setInstagram('');
+    setErrorMessage('data updated successfully.');
     setTimeout(() => {
-      setErrorMessage(''); 
-    }, 10000); 
+      setErrorMessage('');
+    }, 10000);
   };
-
-  const handleDelete = async (idToDelete) => {
-    const response = await fetch(`http://localhost:8000/ContactInfoAndDesc/delete/${idToDelete}`, {
-      method: 'DELETE',
-    });
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
-    }
-
-    console.log(response);
-    setErrorMessage('Info deleted successfully.');
-    setData([]);
-  };
-
-
- 
 
   return (
     <div className="contactInfoDesc">
@@ -105,14 +88,12 @@ function ContactInfo() {
             Email={data.Email}
             InLink={data.InLink}
             FbLink={data.FbLink}
-            InstagramLink={data.PhoneNb}
-            onDelete={handleDelete}
-
-             
+            InstagramLink={data.InstagramLink}
+            
             />
           ))} </table>
 
-        <form className='DashContactInfoForm' onSubmit={handleContactInfoInputs}>
+<form className='DashContactInfoForm' onSubmit={handleUpdate}>
         <label htmlFor="SmallDesc">SmallDesc</label>
         <input type="text" required={true} placeholder='Enter SmallDesc'
           value={SmallDesc} onChange={(e) => setDesc(e.target.value)}></input>
@@ -125,8 +106,8 @@ function ContactInfo() {
         <label htmlFor="InLink">LinkedIn Link</label>
         <input type="text" required={true} placeholder='Enter LinkedIn Link'
           value={InLink} onChange={(e) => setLinkedIn(e.target.value)}></input>
-          <label htmlFor="FbLink">FaceBook Link</label>
-        <input type="text" required={true} placeholder='Enter faceBook Link'
+        <label htmlFor="FbLink">FaceBook Link</label>
+        <input type="text" required={true} placeholder='Enter FaceBook Link'
           value={FbLink} onChange={(e) => setFb(e.target.value)}></input>
         <label htmlFor="InstagramLink">Instagram Link</label>
         <input type="text" required={true} placeholder='Enter Instagram Link'
