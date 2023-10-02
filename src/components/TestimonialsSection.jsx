@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import ReviewModal from './Modal';
+import "../css/Testimonials.css";
+
 
 function Testimonials() {
     const [testimonialsData, setTestimonialsData] = useState([]);
@@ -73,7 +74,7 @@ function Testimonials() {
             <div className="TestimonialTitles">
              
             <b className="TestimonialFooter">You also can contact me and visit my social media</b></div>
-            <ReviewModal />
+       
             </div>
         </div>
     );

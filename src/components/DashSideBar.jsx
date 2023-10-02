@@ -31,11 +31,24 @@ const SideBar = () => {
         )}
       </div>
       <div className={`dashboradMenu ${isMenuClicked ? "visible" : "hidden"}`}>
+
+      <div className="dashboardLogin">
+          <Link to="/dashboard/login">UserInfo</Link>
+        </div>
+      <div className="dashboardHeros">
+          <Link to="/dashboard/hero">Hero</Link>
+        </div>
+        <div className="dashboardContactMe">
+          <Link to="/dashboard/about">About</Link>
+        </div>
         <div className="dashboardSkills">
           <Link to="/dashboard/skills">Skills</Link>
         </div>
         <div className="dashboardProjects">
           <Link to="/dashboard/projects">Projects</Link>
+        </div>
+        <div className="dashboardTestimonial">
+          <Link to="/dashboard/testimonial">Testimonial</Link>
         </div>
         <div className="dashboardMyInfo">
           <Link to="/dashboard/contactInfo">Contact Info</Link>
@@ -43,18 +56,10 @@ const SideBar = () => {
         <div className="dashboardAbout">
           <Link to="/dashboard/contactMe">Contact Me</Link>
         </div>
-        <div className="dashboardContactMe">
-          <Link to="/dashboard/about">About</Link>
-        </div>
-        <div className="dashboardTestimonial">
-          <Link to="/dashboard/testimonial">Testimonial</Link>
-        </div>
-        <div className="dashboardHeros">
-          <Link to="/dashboard/hero">Hero</Link>
-        </div>
-        <div className="dashboardLogin">
-          <Link to="/dashboard/login">UserInfo</Link>
-        </div>
+       
+        
+        
+       
       </div>
     </div>
   );
