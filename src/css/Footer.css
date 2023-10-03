@@ -12,7 +12,7 @@ body {
       rgba(109, 120, 221, 1) 100%
     );
     min-height: 100vh;
-    /* height: 100%; */
+    
   }
   .BodyOfTheFooter {
     display: flex;
@@ -310,7 +310,7 @@ body {
       display: flex;
       flex-direction: column;
       align-items: center;
-      text-align: center; /* Center the text within the container */
+      text-align: center; 
     }
   
     .FooterLeftPart {
@@ -351,7 +351,7 @@ body {
       display: flex;
       flex-direction: column;
       align-items: center;
-      text-align: center; /* Center the text within the container */
+      text-align: center; 
     }
   
     .FooterLeftPart {
