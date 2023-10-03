@@ -51,10 +51,10 @@ const Heros = () => {
       }
 
     
-      fetchDashHeroData();
+    //  fetchDashHeroData();
 
       console.log('Update successful');
-      setErrorMessage('Credentials updated successfully.');
+      setErrorMessage('Data updated successfully.');
       setTimeout(() => {
         setErrorMessage('');
       }, 10000);
