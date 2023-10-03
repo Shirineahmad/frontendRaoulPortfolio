@@ -38,7 +38,7 @@ const Heros = () => {
     const idToUpdate = heroData._id;
     const formData = new FormData();
     formData.append('SmallDesc', SmallDesc);
-    formData.append('HeroImage', image);
+    formData.append('image', image);
 
     try {
       const response = await fetch(`http://localhost:8000/Hero/update/${idToUpdate}`, {
@@ -50,18 +50,23 @@ const Heros = () => {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
 
-    
-    //  fetchDashHeroData();
+    //fetchDashHeroData();
 
-      console.log('Update successful');
+    const data = await response.json();
+    if (data.success) {
+      console.log('Data updated successfully:', data.data);
       setErrorMessage('Data updated successfully.');
       setTimeout(() => {
         setErrorMessage('');
       }, 10000);
-    } catch (error) {
-      console.error('Error updating data:', error);
-      setErrorMessage('An error occurred while updating.');
+    } else {
+      console.error('Error updating data:', data.message);
+      setErrorMessage('Error updating data: ' + data.message);
     }
+  } catch (error) {
+    console.error('An error occurred while updating data:', error);
+    setErrorMessage('An error occurred while updating data.');
+  }
   };
 
   return (
