@@ -11,7 +11,7 @@ const MyProjects = () => {
   const [TechUsed, setTechUsed] = useState('');
   const [DemoLink, setDemoLink] = useState('');
   const [RepoLink, setRepoLink] = useState('');
-  const [image, setProjectImage] = useState(null); 
+  const [image, setProjectImage] = useState(null);
 
   const fetchDashProjectsData = () => {
     fetch('http://localhost:8000/MyProjects/getAll')
@@ -27,7 +27,7 @@ const MyProjects = () => {
   }, []);
 
   const handleDelete = async (id) => {
-    
+
     const response = await fetch(`http://localhost:8000/MyProjects/delete/${id}`, {
       method: 'DELETE',
     });
@@ -37,7 +37,7 @@ const MyProjects = () => {
       return;
     }
 
-    
+
     setData((prevData) => prevData.filter((about) => about._id !== id));
     setErrorMessage('Project deleted successfully.');
     setTimeout(() => {
@@ -54,7 +54,7 @@ const MyProjects = () => {
       }, 10000);
       return;
     }
-  
+
     const formData = new FormData();
     formData.append('ProjectName', ProjectName);
     formData.append('ProjectDesc', ProjectDesc);
@@ -62,19 +62,19 @@ const MyProjects = () => {
     formData.append('DemoLink', DemoLink);
     formData.append('RepoLink', RepoLink);
     formData.append('image', image);
-  
+
     try {
       const response = await fetch('http://localhost:8000/MyProjects/add', {
         method: 'POST',
         body: formData,
       });
-  
+
       if (!response.ok) {
         console.error('HTTP error! Status:', response.status);
         console.error('Response:', response);
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
-  
+
       const data = await response.json();
       if (data.success) {
         console.log('project added successfully:', data.data);
@@ -98,86 +98,89 @@ const MyProjects = () => {
     }
   };
 
- 
+
 
   return (
     <div>
-      <h1 style={{ textAlign: "center" }}>Projects</h1>
+      <h1 className='Projects-Dashboard-h1'>Projects</h1>
       {errorMessage && <p>{errorMessage}</p>}
 
+      <h2 className='Projects-tittle-Dash'> All Projects : </h2>
       <table className='DashProjectTable'>
-          <tr>
-            <th>Project Name</th>
-            <th>Description</th>
-            <th>Tech Used</th>
-            <th>Demo Link</th>
-            <th>Repo Link</th>
-            <th>Project Image</th>
-          </tr>
+        <tr>
+          <th>Project Name</th>
+          <th>Description</th>
+          <th>Tech Used</th>
+          <th>Demo Link</th>
+          <th>Repo Link</th>
+          <th>Project Image</th>
+        </tr>
 
-      {data.map((project) => (
-          <DashProjectTable 
-          key={project._id} 
-          ProjectImage={project.ProjectImage}
-          ProjectName = {project.ProjectName}
-          description = {project.ProjectDesc}
-          techUsed = {project.TechUsed}
-          DemoLink = {project.DemoLink}
-          RepoLink = {project.RepoLink}
-          onDelete={handleDelete}
+        {data.map((project) => (
+          <DashProjectTable
+            key={project._id}
+            ProjectImage={project.ProjectImage}
+            ProjectName={project.ProjectName}
+            description={project.ProjectDesc}
+            techUsed={project.TechUsed}
+            DemoLink={project.DemoLink}
+            RepoLink={project.RepoLink}
+            onDelete={handleDelete}
           />
         ))}
-        </table>
-        <form className='DashProjectForm' onSubmit={handleProjectInputs} encType='multipart/form-data'>
-        <label htmlFor='ProjectName'>Project Name</label>
-        <input
+      </table>
+
+      <h2 className='Projects-tittle-Dash'> Add New Project : </h2>
+      <form className='DashProjectForm' onSubmit={handleProjectInputs} encType='multipart/form-data'>
+        <label htmlFor='ProjectName' className='Project-label'>Project Name</label>
+        <input className='Project-input'
           type='text'
           required={true}
           placeholder='Enter Project Name'
           value={ProjectName}
           onChange={(e) => setProjectName(e.target.value)}
         />
-        <label htmlFor='ProjectDesc'>Project Description</label>
-        <input
+        <label htmlFor='ProjectDesc' className='Project-label'>Project Description</label>
+        <input className='Project-input'
           type='text'
           required={true}
           placeholder='Enter Project Desc'
           value={ProjectDesc}
           onChange={(e) => setProjectDesc(e.target.value)}
         />
-        <label htmlFor='TechUsed'>TechUsed</label>
-        <input
+        <label htmlFor='TechUsed' className='Project-label'>Tech Used</label>
+        <input className='Project-input'
           type='text'
           required={true}
           placeholder='Enter The TechUsed'
           value={TechUsed}
           onChange={(e) => setTechUsed(e.target.value)}
         />
-        <label htmlFor='DemoLink'>DemoLink</label>
-        <input
+        <label htmlFor='DemoLink' className='Project-label'>Demo Link</label>
+        <input className='Project-input'
           type='text'
           required={true}
           placeholder='Enter DemoLink'
           value={DemoLink}
           onChange={(e) => setDemoLink(e.target.value)}
         />
-        <label htmlFor='RepoLink'>RepoLink</label>
-        <input
+        <label htmlFor='RepoLink' className='Project-label'>Repo Link</label>
+        <input className='Project-input'
           type='text'
           required={true}
           placeholder='Enter RepoLink'
           value={RepoLink}
           onChange={(e) => setRepoLink(e.target.value)}
         />
-        <label htmlFor='ProjectImage'>Project Image</label>
-        <input
+        <label htmlFor='ProjectImage' className='Project-label'>Project Image</label>
+        <input className='Project-input'
           type='file'
           required={true}
           accept='image/*'
           onChange={(e) => {
             const file = e.target.files[0];
             if (file) {
-              setProjectImage(file); 
+              setProjectImage(file);
             }
           }}
         />

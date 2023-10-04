@@ -4,10 +4,10 @@ const DashTestimonialsTable = ({ id, onDelete, Name, Email, Review, UserImage, a
   const [isChecked, setIsChecked] = useState(approve);
 
   const handleCheckboxChange = () => {
-    const newApproveValue = !isChecked; 
-    setIsChecked(newApproveValue); 
+    const newApproveValue = !isChecked;
+    setIsChecked(newApproveValue);
     console.log(id);
-    onApproveChange(id, newApproveValue); 
+    onApproveChange(id, newApproveValue);
   };
 
   const handleDelete = () => {
@@ -19,17 +19,17 @@ const DashTestimonialsTable = ({ id, onDelete, Name, Email, Review, UserImage, a
       <td>{Name}</td>
       <td>{Email}</td>
       <td>{Review}</td>
-      
+
       <td>
         <img className="DashUserImage" src={`data:image/png;base64,${UserImage}`} alt="UserImage" />
       </td>
       <td>
-      <input type="checkbox" checked={isChecked} onChange={handleCheckboxChange} />
+        <input type="checkbox" checked={isChecked} onChange={handleCheckboxChange} />
       </td>
       <td>
-        <button onClick={handleDelete}>Delete</button>
+        <button className='Testimonial-delete' onClick={handleDelete}>Delete</button>
       </td>
-      
+
     </tr>
   );
 };

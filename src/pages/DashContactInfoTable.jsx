@@ -5,7 +5,7 @@ const DashContactInfoTable = ({  id, SmallDesc , PhoneNb, Email, InLink, FbLink,
    
   
   return (
-    <tr>
+    <tr className='Contact-Table'>
         <td> {SmallDesc} </td>
         <td> {PhoneNb} </td>
         <td> {Email} </td>

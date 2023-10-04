@@ -1,0 +1,45 @@
+.Contact-Dashboard {
+    text-align: "center";
+    margin-top: 20px;
+}
+
+.DashContactInfoTable {
+    margin-top: 2%;
+    width: 94%;
+    border: 1px solid black;
+    margin-left: 3%;
+}
+
+.Table-content-contactinfo,
+.Contact-Table {
+    line-height: 2.5;
+}
+
+.ContactInfo-label {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 36px;
+    display: flex;
+    text-align: left;
+    align-content: left;
+    justify-content: left;
+    color: black;
+    font-size: medium;
+}
+
+.ContactInfo-input {
+    width: 90%;
+    margin-left: 50px;
+    color: black;
+}
+
+.SubmitContactInfoForm {
+    margin-top: 30px;
+    border: 1px solid black;
+    border-radius: 5px;
+    height: 25px;
+    background: rgb(91, 174, 253);
+    background: linear-gradient(180deg, rgba(91, 174, 253, 1) 0%, rgba(109, 120, 221, 1) 100%);
+    width: 10%;
+    color: black;
+}
