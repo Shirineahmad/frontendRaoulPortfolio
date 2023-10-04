@@ -11,7 +11,7 @@ body {
 
 .AboutMe-void {
 	
-	scale:0.75;
+	scale:0.9;
 	width: 100%;
 	max-width: 1024px;
 	margin: auto;
@@ -231,6 +231,7 @@ a {
 	}
 	
 	.AboutMeSmallContainer{
+		padding:0px;
 		scale:1.5;
 		font-size: xx-large;
 	
@@ -238,11 +239,12 @@ a {
 	.model-name{
 		font-size: 2.5vw;
 		width:30px;
-		padding-right: 10%;
+		padding-left: 10%;
 	}
 
 	.model-desc{
 		font-size: 1.5vw;
+		padding-left:10%;
 	}
 }
 

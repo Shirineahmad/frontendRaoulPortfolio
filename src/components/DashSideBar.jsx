@@ -6,6 +6,9 @@ import { Link } from "react-router-dom";
 const SideBar = () => {
   const [burger_class, setBurgerClass] = useState("burger-bar unclicked");
   const [isMenuClicked, setIsMenuClicked] = useState(true);
+  
+  function handleLogout() {
+    localStorage.clear();}
 
   const updateMenu = () => {
     if (isMenuClicked) {
@@ -21,7 +24,7 @@ const SideBar = () => {
      
       <div className="nav">
         {isMenuClicked ? (
-          <Link to="/"><BiLogOut className="dashboradLogout" /></Link>
+          <Link to="/" onClick={handleLogout}><BiLogOut className="dashboradLogout" /></Link>
         ) : (
           <div className="burger-menu" onClick={updateMenu}>
             <div className={burger_class}></div>
@@ -48,7 +51,7 @@ const SideBar = () => {
           <Link to="/dashboard/projects">Projects</Link>
         </div>
         <div className="dashboardTestimonial">
-          <Link to="/dashboard/testimonial">Testimonial</Link>
+          <Link to="/dashboard/testimonial">Testimonials</Link>
         </div>
         <div className="dashboardMyInfo">
           <Link to="/dashboard/contactInfo">Contact Info</Link>

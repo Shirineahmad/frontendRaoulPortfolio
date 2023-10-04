@@ -12,7 +12,7 @@ const DashContactTable = ({ id, onDelete, UserName, Email, Message }) => {
       <td> {Email} </td>
       <td> {Message} </td>
       <td>
-        <button className='ContactMe-readed' onClick={handleDelete}> Readed </button>
+        <button className='ContactMe-readed' onClick={handleDelete}> Mark as Read</button>
       </td>
     </tr>
   );

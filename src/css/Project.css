@@ -134,6 +134,9 @@
 }
 
 @media screen and (max-width: 500px) {
+  .rec-arrow{
+    display: none;
+  }
   .ProjectCarousel-wrapper {
     width: 100%;
     background: linear-gradient(

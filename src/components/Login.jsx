@@ -19,8 +19,8 @@ const Login = () => {
         ) {
           setError("");
           setIsLoggedIn(true);
-
-          window.open("/dashboard", "RaoulDashBoard");
+          localStorage.setItem('isLoggedIn',true);
+          
         } else {
           setError("Username or password is incorrect");
         }

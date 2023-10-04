@@ -75,7 +75,7 @@ const Testimonial = () => {
 
   return (
     <div>
-      <h1 className='Testimonials-Dashboard'>Testimonial</h1>
+      <h1 className='Testimonials-Dashboard'>Testimonials</h1>
       {errorMessage && <p>{errorMessage}</p>}
 
       <table className='Testimonial-Table'>

@@ -25,9 +25,10 @@ const HeroSection = ({ SmallDesc, HeroImage }) => {
         </div>
       </div>
       <div className="heroSection3-responsive">
+        <div className='helo-responsive'>
         <p className="intro1">Hello!</p>
         <p className="head-title">I'm Raoul Baddawi</p>
-        <p className="intro">{SmallDesc}</p>
+        <p className="intro">{SmallDesc}</p> </div>
         <div className="cont-img">
           <img
             className="image1"
@@ -44,7 +45,7 @@ const HeroSection = ({ SmallDesc, HeroImage }) => {
         
         </div>
       </div>
-    </div>
+   </div>
   );
 };
 
