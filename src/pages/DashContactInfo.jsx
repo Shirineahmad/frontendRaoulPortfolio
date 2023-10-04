@@ -113,7 +113,7 @@ function ContactInfo() {
         <input className='ContactInfo-input' type="text" required={true} placeholder='Enter Instagram Link'
           value={InstagramLink} onChange={(e) => setInstagram(e.target.value)}></input>
         <br />
-        <input type="submit" value="Submit" className="SubmitContactInfoForm" />
+        <input type="submit" value="Update" className="SubmitContactInfoForm" />
       </form>
 
 

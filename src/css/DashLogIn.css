@@ -1,0 +1,42 @@
+.LogInDashboard-h1 {
+    text-align: "center";
+    margin-top: 20px;
+}
+
+.LogInDashboard-h2 {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.DashLogInTable {
+    margin-top: 2%;
+    width: 30%;
+    border: 1px solid black;
+    margin-left: 35%;
+    text-align: center;
+    vertical-align: middle;
+    border-spacing: 20px;
+}
+
+.DashLogInForm label {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    color: black;
+    font-size: medium;
+}
+
+.DashLogInForm input {
+    width: 20%;
+}
+
+.SubmitLogInForm {
+    margin-top: 30px;
+    border: 1px solid black;
+    border-radius: 5px;
+    height: 25px;
+    background: rgb(91, 174, 253);
+    background: linear-gradient(180deg, rgba(91, 174, 253, 1) 0%, rgba(109, 120, 221, 1) 100%);
+    max-width: 7%;
+    color: black;
+}

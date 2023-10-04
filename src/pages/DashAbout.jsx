@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import DashAboutTable from './DashAboutTable';
-import "../css/DashSkill.css";
+import "../css/DashAbout.css"
 
 const About = () => {
   const [data, setData] = useState([]);
@@ -26,8 +26,8 @@ const About = () => {
     if (data.length > 7) {
       setErrorMessage('You should delete previous credentials before adding new ones.');
       setTimeout(() => {
-        setErrorMessage(''); 
-      }, 10000); 
+        setErrorMessage('');
+      }, 10000);
       return;
     }
 
@@ -53,13 +53,13 @@ const About = () => {
     setTitle('');
     setDesc('');
     setTimeout(() => {
-      setErrorMessage(''); 
-    }, 10000); 
+      setErrorMessage('');
+    }, 10000);
   };
 
 
   const handleDelete = async (id) => {
-    
+
     const response = await fetch(`http://localhost:8000/About/delete/${id}`, {
       method: 'DELETE',
     });
@@ -69,7 +69,7 @@ const About = () => {
       return;
     }
 
-    
+
     setData((prevData) => prevData.filter((about) => about._id !== id));
     setErrorMessage('About deleted successfully.');
     setTimeout(() => {
@@ -79,39 +79,39 @@ const About = () => {
 
   return (
     <div>
-      <h1 style={{ textAlign: "center" }}>About</h1>
+      <h1 className='AboutDashboard-h1'>About</h1>
       {errorMessage && <p>{errorMessage}</p>}
-
+      <h2 className='AboutDashboard-h2'> Current About Section </h2>
       <table className='DashAboutTable'>
-          <tr>
-            <th>AboutTitle</th>
-            <th>AboutDesc</th>
-          
-          </tr>
-          {data.map((about) => (
-            <DashAboutTable
-              key={about._id}
-              id={about._id}
-              AboutTitle={about.AboutTitle}
-              AboutDesc={about.AboutDesc}
-              onDelete={handleDelete}
-            />
-          ))}
+        <tr>
+          <th>About Title</th>
+          <th>About Desc</th>
 
-         </table>
+        </tr>
+        {data.map((about) => (
+          <DashAboutTable
+            key={about._id}
+            id={about._id}
+            AboutTitle={about.AboutTitle}
+            AboutDesc={about.AboutDesc}
+            onDelete={handleDelete}
+          />
+        ))}
 
-         <form className='DashAboutForm' onSubmit={handleAboutInputs}>
-        <label htmlFor="AboutTitle">AboutTitle</label>
+      </table>
+      <h2 className='AboutDashboard-h2'> Add About Section </h2>
+      <form className='DashAboutForm' onSubmit={handleAboutInputs}>
+        <label htmlFor="AboutTitle">About Title</label>
         <input type="text" required={true} placeholder='Enter About Title'
           value={AboutTitle} onChange={(e) => setTitle(e.target.value)}></input>
-        <label htmlFor="AboutDesc">AboutDesc</label>
+        <label htmlFor="AboutDesc">About Desc</label>
         <input type="text" required={true} placeholder='Enter AboutDesc'
           value={AboutDesc} onChange={(e) => setDesc(e.target.value)}></input>
         <br />
-        <input type="submit" value="Submit" className="SubmitAboutForm" />
+        <input type="submit" value="Add" className="SubmitAboutForm" />
       </form>
-         
-        
+
+
     </div>
   );
 }

@@ -27,7 +27,7 @@ const Login = () => {
   }, []);
 
   const handleUpdate = async () => {
-    
+
     if (data.length !== 1) {
       setErrorMessage('No data to update.');
       return;
@@ -37,7 +37,7 @@ const Login = () => {
     const updatedLogInDetails = { AdminUserName, AdminPass };
 
     const response = await fetch(`http://localhost:8000/LogIn/update/${idToUpdate}`, {
-      method: 'PUT', 
+      method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
       },
@@ -57,25 +57,27 @@ const Login = () => {
 
   return (
     <div>
-      <h1 style={{ textAlign: "center" }}>UserInfo</h1>
+      <h1 className='LogInDashboard-h1'>UserInfo</h1>
       {errorMessage && <p>{errorMessage}</p>}
 
+      <h2 className='LogInDashboard-h2'> Current Login Credentials </h2>
       <table className='DashLogInTable'>
-        
-          <tr>
-            <th>UserName</th>
-            <th>Password</th>
-          </tr>
-        
-      
-          <DashLogInTable
-            id={data[0]?._id}
-            UserName={data[0]?.AdminUserName}
-            Password={data[0]?.AdminPass}
-          />
-       
+
+        <tr>
+          <th>UserName</th>
+          <th>Password</th>
+        </tr>
+
+
+        <DashLogInTable
+          id={data[0]?._id}
+          UserName={data[0]?.AdminUserName}
+          Password={data[0]?.AdminPass}
+        />
+
       </table>
 
+      <h2 className='LogInDashboard-h2'> Update Login Credentials </h2>
       <form className='DashLogInForm' onSubmit={handleUpdate}>
         <label htmlFor="UserName">Username</label>
         <input

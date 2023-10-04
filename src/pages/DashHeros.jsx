@@ -33,7 +33,7 @@ const Heros = () => {
   }, []);
 
   const handleUpdate = async (e) => {
-    e.preventDefault(); 
+    e.preventDefault();
 
     const idToUpdate = heroData._id;
     const formData = new FormData();
@@ -50,8 +50,8 @@ const Heros = () => {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
 
-    
-    //  fetchDashHeroData();
+
+      //  fetchDashHeroData();
 
       console.log('Update successful');
       setErrorMessage('Data updated successfully.');
@@ -66,14 +66,14 @@ const Heros = () => {
 
   return (
     <div>
-      <h1 style={{ textAlign: 'center' }}>Hero</h1>
+      <h1 className='HeroDashboard-h1'>Hero</h1>
       {errorMessage && <p>{errorMessage}</p>}
-
+      <h2 className='HeroDashboard-h2'> Current Hero Section </h2>
       <table className='DashHeroTable'>
         <thead>
           <tr>
-            <th>HeroDesc</th>
-            <th>HeroImage</th>
+            <th>Hero Desc</th>
+            <th>Hero Image</th>
           </tr>
         </thead>
         <tbody>
@@ -86,6 +86,7 @@ const Heros = () => {
         </tbody>
       </table>
 
+      <h2 className='HeroDashboard-h2'> Update Hero Section </h2>
       <form className='DashHeroForm' onSubmit={handleUpdate} encType='multipart/form-data'>
         <label htmlFor='SmallDesc'>Small Description</label>
         <input
@@ -108,7 +109,7 @@ const Heros = () => {
           }}
         />
         <br />
-        <input type='submit' value='Submit' className='SubmitHeroForm' />
+        <input type='submit' value='Update' className='SubmitHeroForm' />
       </form>
     </div>
   );
