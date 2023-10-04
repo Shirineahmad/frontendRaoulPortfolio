@@ -1,0 +1,25 @@
+.ContactMe-Dashboard {
+    text-align: "center";
+    margin-top: 20px;
+}
+
+.DashContactTable {
+    margin-top: 2%;
+    width: 70%;
+    border: 1px solid black;
+    margin-left: 15%;
+    text-align: left;
+    vertical-align: middle;
+    border-spacing: 20px;
+}
+
+.ContactMe-readed {
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 0px;
+    padding-left: 20px;
+    padding-right: 20px;
+    height: 25px;
+    background: rgb(91, 174, 253);
+    background: linear-gradient(180deg, rgba(91, 174, 253, 1) 0%, rgba(109, 120, 221, 1) 100%);
+}

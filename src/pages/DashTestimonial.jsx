@@ -18,7 +18,7 @@ const Testimonial = () => {
   };
 
   const handleDelete = async (id) => {
-    
+
     const response = await fetch(`http://localhost:8000/Testimonials/delete/${id}`, {
       method: 'DELETE',
     });
@@ -28,7 +28,7 @@ const Testimonial = () => {
       return;
     }
 
-    
+
     setData((prevData) => prevData.filter((about) => about._id !== id));
     setErrorMessage('Testimonial deleted successfully.');
     setTimeout(() => {
@@ -40,32 +40,32 @@ const Testimonial = () => {
     fetchDashTestimonialsData();
   }, []);
 
-  
+
   const handleApproveChange = async (id, newApproveValue) => {
-    console.log('ID:', id); 
-    console.log('New Approve Value:', newApproveValue); 
-  
-  
+    console.log('ID:', id);
+    console.log('New Approve Value:', newApproveValue);
+
+
     const response = await fetch(`http://localhost:8000/Testimonials/update/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ approve: newApproveValue }),
-      
+
     });
-  
+
     if (!response.ok) {
       console.error(`Failed to update approve status for row with ID: ${id}`);
       return;
     }
-  
+
     setData((prevData) =>
       prevData.map((testimonial) =>
         testimonial._id === id ? { ...testimonial, approve: newApproveValue } : testimonial
       )
     );
-  
+
     setErrorMessage('Testimonial approve status updated successfully.');
     setTimeout(() => {
       setErrorMessage('');
@@ -75,22 +75,22 @@ const Testimonial = () => {
 
   return (
     <div>
-      <h1 style={{ textAlign: "center" }}>Testimonial</h1>
+      <h1 className='Testimonials-Dashboard'>Testimonial</h1>
       {errorMessage && <p>{errorMessage}</p>}
 
-      <table className='DashProjectTable'>
-          <tr>
-            <th> Name</th>
-            <th>Email</th>
-            <th>Review</th>
-            <th>User Image</th>
-            <th>Show</th>
-          </tr>
+      <table className='Testimonial-Table'>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Review</th>
+          <th>User Image</th>
+          <th>Show</th>
+        </tr>
 
-      {data.map((testimonial) => (
-          <DashTestimonialsTable 
-          key={testimonial._id} 
-            id={testimonial._id}  
+        {data.map((testimonial) => (
+          <DashTestimonialsTable
+            key={testimonial._id}
+            id={testimonial._id}
             Name={testimonial.Name}
             Email={testimonial.Email}
             Review={testimonial.Review}
@@ -100,7 +100,7 @@ const Testimonial = () => {
             onDelete={handleDelete}
           />
         ))}
-        </table>
+      </table>
     </div>
   );
 }

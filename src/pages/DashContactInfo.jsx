@@ -38,17 +38,17 @@ function ContactInfo() {
   }, []);
 
   const handleUpdate = async () => {
-    
+
     if (data.length !== 1) {
       setErrorMessage('No data to update.');
       return;
     }
 
     const idToUpdate = data[0]._id;
-    const updatedContactInfoDetails = { SmallDesc, PhoneNb, Email, InLink, FbLink, InstagramLink  };
+    const updatedContactInfoDetails = { SmallDesc, PhoneNb, Email, InLink, FbLink, InstagramLink };
 
     const response = await fetch(`http://localhost:8000/ContactInfoAndDesc/update/${idToUpdate}`, {
-      method: 'PUT', 
+      method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
       },
@@ -68,20 +68,20 @@ function ContactInfo() {
 
   return (
     <div className="contactInfoDesc">
-      <h1>ContactInfo, Social Share And Desc</h1>
+      <h1 className='Contact-Dashboard'>ContactInfo, Social Share And Desc</h1>
       {errorMessage && <p>{errorMessage}</p>}
       <table className='DashContactInfoTable'>
-          <tr>
-            <th>SmallDesc</th>
-            <th>PhoneNb</th>
-            <th>Email</th>
-            <th>LinkedIn Link </th>
-            <th>FaceBook Link</th>
-            <th>Instagram Link</th>
-          
-          </tr>
-          {data.map((data) => (
-            <DashContactInfoTable
+        <tr className='Table-content-contactinfo'>
+          <th>SmallDesc</th>
+          <th>PhoneNb</th>
+          <th>Email</th>
+          <th>LinkedIn Link </th>
+          <th>FaceBook Link</th>
+          <th>Instagram Link</th>
+
+        </tr>
+        {data.map((data) => (
+          <DashContactInfoTable
             id={data._id}
             SmallDesc={data.SmallDesc}
             PhoneNb={data.PhoneNb}
@@ -89,36 +89,36 @@ function ContactInfo() {
             InLink={data.InLink}
             FbLink={data.FbLink}
             InstagramLink={data.InstagramLink}
-            
-            />
-          ))} </table>
 
-<form className='DashContactInfoForm' onSubmit={handleUpdate}>
-        <label htmlFor="SmallDesc">SmallDesc</label>
-        <input type="text" required={true} placeholder='Enter SmallDesc'
+          />
+        ))} </table>
+
+      <form className='DashContactInfoForm' onSubmit={handleUpdate}>
+        <label htmlFor="SmallDesc" className='ContactInfo-label'> Small Desc</label>
+        <input className='ContactInfo-input' type="text" required={true} placeholder='Enter SmallDesc'
           value={SmallDesc} onChange={(e) => setDesc(e.target.value)}></input>
-        <label htmlFor="PhoneNb">Phone Number</label>
-        <input type="text" required={true} placeholder='Enter Phone Number'
+        <label htmlFor="PhoneNb" className='ContactInfo-label'>Phone Number</label>
+        <input className='ContactInfo-input' type="text" required={true} placeholder='Enter Phone Number'
           value={PhoneNb} onChange={(e) => setPhone(e.target.value)}></input>
-        <label htmlFor="Email">Email</label>
-        <input type="text" required={true} placeholder='Enter Email'
+        <label htmlFor="Email" className='ContactInfo-label'>Email</label>
+        <input className='ContactInfo-input' type="text" required={true} placeholder='Enter Email'
           value={Email} onChange={(e) => setEmail(e.target.value)}></input>
-        <label htmlFor="InLink">LinkedIn Link</label>
-        <input type="text" required={true} placeholder='Enter LinkedIn Link'
+        <label htmlFor="InLink" className='ContactInfo-label'>LinkedIn Link</label>
+        <input className='ContactInfo-input' type="text" required={true} placeholder='Enter LinkedIn Link'
           value={InLink} onChange={(e) => setLinkedIn(e.target.value)}></input>
-        <label htmlFor="FbLink">FaceBook Link</label>
-        <input type="text" required={true} placeholder='Enter FaceBook Link'
+        <label htmlFor="FbLink" className='ContactInfo-label'>FaceBook Link</label>
+        <input className='ContactInfo-input' type="text" required={true} placeholder='Enter FaceBook Link'
           value={FbLink} onChange={(e) => setFb(e.target.value)}></input>
-        <label htmlFor="InstagramLink">Instagram Link</label>
-        <input type="text" required={true} placeholder='Enter Instagram Link'
+        <label htmlFor="InstagramLink" className='ContactInfo-label'>Instagram Link</label>
+        <input className='ContactInfo-input' type="text" required={true} placeholder='Enter Instagram Link'
           value={InstagramLink} onChange={(e) => setInstagram(e.target.value)}></input>
         <br />
         <input type="submit" value="Submit" className="SubmitContactInfoForm" />
       </form>
 
-        
-        
-      
+
+
+
     </div>
   );
 }

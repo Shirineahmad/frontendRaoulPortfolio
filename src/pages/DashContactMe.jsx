@@ -22,7 +22,7 @@ const ContactMe = () => {
   }, []);
 
   const handleDelete = async (id) => {
-    
+
     const response = await fetch(`http://localhost:8000/ContactMe/delete/${id}`, {
       method: 'DELETE',
     });
@@ -32,7 +32,7 @@ const ContactMe = () => {
       return;
     }
 
-    
+
     setData((prevData) => prevData.filter((about) => about._id !== id));
     setErrorMessage('About deleted successfully.');
     setTimeout(() => {
@@ -41,28 +41,28 @@ const ContactMe = () => {
   };
   return (
     <div>
-      <h1 style={{ textAlign: "center" }}>Contact Me</h1>
+      <h1 className='ContactMe-Dashboard '>Contact Me</h1>
       {errorMessage && <p>{errorMessage}</p>}
       <p>You Have  {data.length} unreaded messages </p>
       <table className='DashContactTable'>
-          <tr>
-            <th>UserName</th>
-            <th>Email</th>
-            <th>Message</th>
-            
-          </tr>
-          {data.map((contact) => (
-            <DashContactTable
-              key={contact._id}
-              id={contact._id}
-              UserName={contact.UserName}
-              Email={contact.Email}
-              Message={contact.Message}
-              onDelete={handleDelete}
-            />
-            
-          ))}
-          </table>
+        <tr>
+          <th>UserName</th>
+          <th>Email</th>
+          <th>Message</th>
+
+        </tr>
+        {data.map((contact) => (
+          <DashContactTable
+            key={contact._id}
+            id={contact._id}
+            UserName={contact.UserName}
+            Email={contact.Email}
+            Message={contact.Message}
+            onDelete={handleDelete}
+          />
+
+        ))}
+      </table>
     </div>
   );
 }

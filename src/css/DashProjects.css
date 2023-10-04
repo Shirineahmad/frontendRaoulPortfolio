@@ -1,0 +1,80 @@
+.Projects-Dashboard-h1 {
+    text-align: "center";
+    margin-top: 20px;
+}
+
+.Projects-tittle-Dash {
+    text-align: left;
+    margin-top: 30px;
+    margin-left: 35px;
+}
+
+.DashProjectTable {
+    margin-top: 2%;
+    width: 94%;
+    border: 1px solid black;
+    margin-left: 3%;
+    text-align: center;
+    vertical-align: middle;
+    border-spacing: 10px;
+}
+
+.Delete-projects {
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 0px;
+    padding-left: 20px;
+    padding-right: 20px;
+    height: 25px;
+    background: rgb(91, 174, 253);
+    background: linear-gradient(180deg, rgba(91, 174, 253, 1) 0%, rgba(109, 120, 221, 1) 100%);
+}
+
+.DashProjectForm {
+    margin-left: 35px;
+}
+
+.Project-label {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 0;
+    display: flex;
+    text-align: left;
+    align-content: left;
+    justify-content: left;
+    color: black;
+    font-size: medium;
+}
+
+.Project-input {
+    width: 94%;
+    margin-left: 0;
+}
+
+.SubmitProjectForm {
+    border: 1px solid black;
+    border-radius: 5px;
+    height: 25px;
+    background: rgb(91, 174, 253);
+    background: linear-gradient(180deg, rgba(91, 174, 253, 1) 0%, rgba(109, 120, 221, 1) 100%);
+    width: 10%;
+    color: black;
+}
+
+.SubmitLogInForm,
+.SubmitAboutForm,
+.SubmitSkillForm,
+.SubmitProjectForm,
+.SubmitContactInfoForm,
+.SubmitHeroForm {
+    border: 1px solid black;
+    background-color: gray;
+}
+
+.DashHeroImage,
+.DashSkillImage,
+.DashProjectImage,
+.DashUserImage {
+    max-width: 50px;
+    max-height: 50px;
+}
