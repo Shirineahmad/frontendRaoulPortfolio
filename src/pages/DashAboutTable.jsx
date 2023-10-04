@@ -1,5 +1,5 @@
 import React from 'react';
-
+import "../css/DashAbout.css";
 
 const DashAboutTable = ({ id, onDelete, AboutTitle ,AboutDesc}) => {
     const handleDelete = () => {
@@ -8,11 +8,13 @@ const DashAboutTable = ({ id, onDelete, AboutTitle ,AboutDesc}) => {
   
   return (
     <tr>
-        <td> {AboutTitle} </td>
-        <td> {AboutDesc} </td>
-        <td>
-        <button onClick={handleDelete}>Delete</button>
-         </td>
+      <td> {AboutTitle} </td>
+      <td> {AboutDesc} </td>
+      <td>
+        <button onClick={handleDelete} className="DashAboutoDelete">
+          Delete
+        </button>
+      </td>
     </tr>
   );
 };

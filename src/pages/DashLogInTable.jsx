@@ -1,4 +1,5 @@
 import React from 'react';
+import "../css/DashLogIn.css"
 
 
 const DashLogInTable = ({ id, onDelete, UserName ,Password}) => {
@@ -10,7 +11,7 @@ const DashLogInTable = ({ id, onDelete, UserName ,Password}) => {
         <td> {UserName} </td>
         <td> {Password} </td>
         <td>
-        <button onClick={handleDeleteClick}>Delete</button>
+        <button onClick={handleDeleteClick} className='DashContainDelete'>Delete</button>
          </td>
     </tr>
   );

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import DashAboutTable from './DashAboutTable';
-import "../css/DashSkill.css";
+import "../css/DashAbout.css";
 
 const About = () => {
   const [data, setData] = useState([]);
@@ -82,36 +82,62 @@ const About = () => {
       <h1 style={{ textAlign: "center" }}>About</h1>
       {errorMessage && <p>{errorMessage}</p>}
 
-      <table className='DashAboutTable'>
+      <table className="DashAboutContainTable">
+        <tr>
+          <th>AboutTitle</th>
+          <th>AboutDesc</th>
+        </tr>
+        {data.map((about) => (
+          <DashAboutTable
+            key={about._id}
+            id={about._id}
+            AboutTitle={about.AboutTitle}
+            AboutDesc={about.AboutDesc}
+            onDelete={handleDelete}
+          />
+        ))}
+      </table>
+
+      <form className="DashAboutContainForm" onSubmit={handleAboutInputs}>
+        <table className="DashContainForm">
           <tr>
-            <th>AboutTitle</th>
-            <th>AboutDesc</th>
-          
+            <th>
+              <label htmlFor="AboutTitle" className="DasAboutLabel">
+                AboutTitle
+              </label>
+            </th>
+            <th>
+              <label htmlFor="AboutDesc">AboutDesc</label>
+            </th>
           </tr>
-          {data.map((about) => (
-            <DashAboutTable
-              key={about._id}
-              id={about._id}
-              AboutTitle={about.AboutTitle}
-              AboutDesc={about.AboutDesc}
-              onDelete={handleDelete}
+          <tr>
+            <td>
+              <input
+                className="DashHeroInputFormAbout"
+                type="text"
+                required={true}
+                placeholder="Enter About Title"
+                value={AboutTitle}
+                onChange={(e) => setTitle(e.target.value)}
+              ></input>
+
+              <input
+                className="DashHeroInputFormAbout"
+                type="text"
+                required={true}
+                placeholder="Enter AboutDesc"
+                value={AboutDesc}
+                onChange={(e) => setDesc(e.target.value)}
+              ></input>
+            </td>
+            <input
+              type="submit"
+              value="Submit"
+              className="SubmitAboutContainForm"
             />
-          ))}
-
-         </table>
-
-         <form className='DashAboutForm' onSubmit={handleAboutInputs}>
-        <label htmlFor="AboutTitle">AboutTitle</label>
-        <input type="text" required={true} placeholder='Enter About Title'
-          value={AboutTitle} onChange={(e) => setTitle(e.target.value)}></input>
-        <label htmlFor="AboutDesc">AboutDesc</label>
-        <input type="text" required={true} placeholder='Enter AboutDesc'
-          value={AboutDesc} onChange={(e) => setDesc(e.target.value)}></input>
-        <br />
-        <input type="submit" value="Submit" className="SubmitAboutForm" />
+          </tr>
+        </table>
       </form>
-         
-        
     </div>
   );
 }

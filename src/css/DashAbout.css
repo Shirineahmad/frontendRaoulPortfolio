@@ -1,0 +1,30 @@
+.DashAboutContainTable{
+      width: 100%;
+    height: 100%;
+}
+.DashAboutContainTable  th,.DashContainForm label{
+    background: rgb(91, 174, 253);
+    background: linear-gradient( 180deg, rgba(91, 174, 253, 1) 0%, rgba(109, 120, 221, 1) 100%);
+color: white;
+    font-size: larger;
+}
+ .DashAboutLabel{
+   font-size: large;
+    display: contents;
+}
+.DashAboutContainForm{
+    width: max-content;
+}
+
+
+.SubmitAboutContainForm {
+    background: rgb(91, 174, 253);
+    background: linear-gradient( 180deg, rgba(91, 174, 253, 1) 0%, rgba(109, 120, 221, 1) 100%);
+    padding: 5px 5px;
+    border: none;
+    color: white;
+}
+.DashHeroInputFormAbout{
+   
+    padding: 5px 5px;
+}

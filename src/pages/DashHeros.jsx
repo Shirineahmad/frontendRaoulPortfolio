@@ -84,10 +84,10 @@ const Heros = () => {
 
   return (
     <div>
-      <h1 style={{ textAlign: 'center' }}>Hero</h1>
+      <h1 style={{ textAlign: "center" }}>Hero</h1>
       {errorMessage && <p>{errorMessage}</p>}
 
-      <table className='DashHeroTable'>
+      <table className="DashcontainHeroTable">
         <tr>
           <th>HeroDesc</th>
           <th>HeroImage</th>
@@ -104,29 +104,52 @@ const Heros = () => {
         ))}
       </table>
 
-      <form className='DashHeroForm' onSubmit={handleHeroInputs} encType='multipart/form-data'>
-        <label htmlFor='SmallDesc'>Small Description</label>
-        <input
-          type='text'
-          required={true}
-          placeholder='Enter Small Description'
-          value={SmallDesc}
-          onChange={(e) => setSmallDesc(e.target.value)}
-        />
-        <label htmlFor='HeroImage'>Hero Image</label>
-        <input
-          type='file'
-          required={true}
-          accept='image/*'
-          onChange={(e) => {
-            const file = e.target.files[0];
-            if (file) {
-              setHeroImage(file); 
-            }
-          }}
-        />
-        <br />
-        <input type='submit' value='Submit' className='SubmitHeroForm' />
+      <form
+        className="DashHeroContainForm"
+        onSubmit={handleHeroInputs}
+        encType="multipart/form-data"
+      >
+        <table className="DashcontainHeroTable">
+          <tr>
+            <th>
+              <label htmlFor="SmallDesc" className="DashHeroLabel">
+                Small Description
+              </label>
+            </th>
+            <th>
+              <label htmlFor="HeroImage" className="DashHeroLabel">
+                Hero Image
+              </label>
+            </th>
+          </tr>
+          <tr>
+            <td>
+              <input
+                className="DashHeroInputForm"
+                type="text"
+                required={true}
+                placeholder="Enter Small Description"
+                value={SmallDesc}
+                onChange={(e) => setSmallDesc(e.target.value)}
+              />
+            </td>
+            <td>
+              <input
+                className="DashHeroInputForm"
+                type="file"
+                required={true}
+                accept="image/*"
+                onChange={(e) => {
+                  const file = e.target.files[0];
+                  if (file) {
+                    setHeroImage(file);
+                  }
+                }}
+              />
+            </td>
+            <input type="submit" value="Submit" className="submitHeroform" />
+          </tr>
+        </table>
       </form>
     </div>
   );

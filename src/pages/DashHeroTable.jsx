@@ -1,5 +1,5 @@
 import React from 'react';
-
+import "../css/DashHero.css"
 
 const DashHeroTable = ({ id, onDelete, SmallDesc ,HeroImage}) => {
     
@@ -8,11 +8,20 @@ const DashHeroTable = ({ id, onDelete, SmallDesc ,HeroImage}) => {
 
   return (
     <tr>
-        <td> {SmallDesc } </td>
-        <td> <img className="DashHeroImage" src={`data:image/png;base64,${HeroImage}`} alt='HeroImage' /></td>
-        <td>
-        <button onClick={handleDeleteClick}>Delete</button>
-         </td>
+      <td> {SmallDesc} </td>
+      <td>
+        {" "}
+        <img
+          className="DashHeroImage"
+          src={`data:image/png;base64,${HeroImage}`}
+          alt="HeroImage"
+        />
+      </td>
+      <td>
+        <button onClick={handleDeleteClick} className='DashHeroDelete'>
+          Delete
+        </button>
+      </td>
     </tr>
   );
 };

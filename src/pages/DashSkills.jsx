@@ -99,103 +99,99 @@ const DashSkills = () => {
       {errorMessage && <p>{errorMessage}</p>}
 
       <h2>FrontEnd Skills</h2>
-      <table className='DashSkillsTable'>
-          <tr>
-          
-            <th>Skill Desc</th>
-            <th>Skill Image</th>
-          
-          </tr>
-       
-          {filteredFrontData.map((skill) => (
-            <DashSkillsTable
-              key={skill._id}
-              id={skill._id}
-              SkillDesc={skill.SkillDesc}
-              SkillImage={skill.SkillImage}
-              onDelete={handleDelete}
-            />
-          ))}
+      <table className="DashSkillsContainTable">
+        <tr>
+          <th>Skill Desc</th>
+          <th>Skill Image</th>
+        </tr>
 
-         </table>
+        {filteredFrontData.map((skill) => (
+          <DashSkillsTable
+            key={skill._id}
+            id={skill._id}
+            SkillDesc={skill.SkillDesc}
+            SkillImage={skill.SkillImage}
+            onDelete={handleDelete}
+          />
+        ))}
+      </table>
 
+      <h2>BackEnd Skills</h2>
+      <table className="DashSkillsTable">
+        <tr>
+          <th>Skill Desc</th>
+          <th>Skill Image</th>
+        </tr>
 
-         <h2>BackEnd Skills</h2>
-      <table className='DashSkillsTable'>
-          <tr>
-          
-            <th>Skill Desc</th>
-            <th>Skill Image</th>
-          
-          </tr>
-       
-          {filteredBackData.map((skill) => (
-            <DashSkillsTable
-              key={skill._id}
-              id={skill._id}
-              SkillDesc={skill.SkillDesc}
-              SkillImage={skill.SkillImage}
-              onDelete={handleDelete}
-            />
-          ))}
+        {filteredBackData.map((skill) => (
+          <DashSkillsTable
+            key={skill._id}
+            id={skill._id}
+            SkillDesc={skill.SkillDesc}
+            SkillImage={skill.SkillImage}
+            onDelete={handleDelete}
+          />
+        ))}
+      </table>
 
-         </table>
+      <h2>Other Skills</h2>
+      <table className="DashSkillsTable">
+        <tr>
+          <th>Skill Desc</th>
+          <th>Skill Image</th>
+        </tr>
 
+        {filteredOtherData.map((skill) => (
+          <DashSkillsTable
+            key={skill._id}
+            id={skill._id}
+            SkillDesc={skill.SkillDesc}
+            SkillImage={skill.SkillImage}
+            onDelete={handleDelete}
+          />
+        ))}
+      </table>
 
-         <h2>Other Skills</h2>
-      <table className='DashSkillsTable'>
-          <tr>
-      
-            <th>Skill Desc</th>
-            <th>Skill Image</th>
-          
-          </tr>
-       
-          {filteredOtherData.map((skill) => (
-            <DashSkillsTable
-              key={skill._id}
-              id={skill._id}
-              SkillDesc={skill.SkillDesc}
-              SkillImage={skill.SkillImage}
-              onDelete={handleDelete}
-            />
-          ))}
-
-         </table>
-
-         <form className='DashSkillsForm' onSubmit={handleSkillsInputs} encType='multipart/form-data'>
-         <label htmlFor='SkillType'>Skill Type</label>
-          <select
-            required={true}
-            value={SkillType}
-            onChange={(e) => setSkillType(e.target.value)}
-          >
-            <option value='FrontEnd'>FrontEnd </option>
-            <option value='BackEnd'> BackEnd </option>
-            <option value='Other'>Other</option>
-          </select>
-        <label htmlFor='SkillDesc'>Skill Description</label>
-        <input
-          type='text'
+      <form
+        className="DashSkillsContainForm"
+        onSubmit={handleSkillsInputs}
+        encType="multipart/form-data"
+      >
+        
+        <label htmlFor="SkillType" className='DashSkillsLabel'>
+          Skill Type
+        </label>
+        <select
           required={true}
-          placeholder='Enter Skill Desc'
+          value={SkillType}
+          onChange={(e) => setSkillType(e.target.value)}
+        >
+          <option value="FrontEnd">FrontEnd </option>
+          <option value="BackEnd"> BackEnd </option>
+          <option value="Other">Other</option>
+        </select>
+        <label htmlFor="SkillDesc">Skill Description</label>
+        <input
+          type="text"
+          required={true}
+          placeholder="Enter Skill Desc"
           value={SkillDesc}
           onChange={(e) => setSkillDesc(e.target.value)}
         />
-        <label htmlFor='SkillImage'>Skill Image</label>
+        <label htmlFor="SkillImage">Skill Image</label>
         <input
-          type='file'
+          type="file"
           required={true}
-          accept='image/*'
+          accept="image/*"
           onChange={(e) => {
             const file = e.target.files[0];
             if (file) {
-              setSkillImage(file); 
+              setSkillImage(file);
             }
           }}
         />
         <br />
-        <input type='submit' value='Submit' className='SubmitSkillForm' />
+        <input type="submit" value="Submit" className="SubmitSkillForm" />
       </form>
     </div>
   );

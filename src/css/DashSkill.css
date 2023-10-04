@@ -1,0 +1,14 @@
+.DashSkillsContainTable{
+      width: 100%;
+    height: 100%;
+}
+.DashSkillsContainTable  th,.DashSkillsContainForm label{
+    background: rgb(91, 174, 253);
+    background: linear-gradient( 180deg, rgba(91, 174, 253, 1) 0%, rgba(109, 120, 221, 1) 100%);
+color: white;
+    font-size: larger;
+}
+ .DashSkillsLabel{
+   font-size: large;
+    display: contents;
+}

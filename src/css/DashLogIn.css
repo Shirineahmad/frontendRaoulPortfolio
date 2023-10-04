@@ -1,0 +1,35 @@
+.DashContainTable th,.DashContainTable label{
+background: rgb(91, 174, 253);
+    background: linear-gradient( 180deg, rgba(91, 174, 253, 1) 0%, rgba(109, 120, 221, 1) 100%);
+    color: white;
+    font-size: larger;
+        
+  
+}
+.DashContainTable
+{
+    width: 100%;
+    height: 100%;
+}
+ .DashLabel{
+    display: contents;
+}
+.DashContainForm{
+    width: max-content;
+}
+.SubmitContainForm{
+    background: rgb(91, 174, 253);
+    background: linear-gradient( 180deg, rgba(91, 174, 253, 1) 0%, rgba(109, 120, 221, 1) 100%);
+    padding: 5px 5px;
+    border: none;
+    color: white;
+}
+.DashInputForm{
+    padding: 5px 5px;
+}
+.DashContainDelete{
+     background: rgb(91, 174, 253);
+    background: linear-gradient( 180deg, rgba(91, 174, 253, 1) 0%, rgba(109, 120, 221, 1) 100%);
+padding: 5px 5px;
+
+color: white;}

@@ -77,35 +77,57 @@ const Login = () => {
       <h1 style={{ textAlign: "center" }}>UserInfo</h1>
       {errorMessage && <p>{errorMessage}</p>}
 
-      <table className='DashLogInTable'>
-          <tr>
-            <th>UserName</th>
-            <th>Password</th>
-        
-          </tr>
-    
-       
-          <DashLogInTable
-            id={data[0]?._id}
-            UserName={data[0]?.AdminUserName}
-            Password={data[0]?.AdminPass}
-            onDelete={handleDelete}
-       
-          />
-        
-          
-        
+      <table className="DashContainTable">
+        <tr>
+          <th>UserName</th>
+          <th>Password</th>
+        </tr>
+
+        <DashLogInTable
+          id={data[0]?._id}
+          UserName={data[0]?.AdminUserName}
+          Password={data[0]?.AdminPass}
+          onDelete={handleDelete}
+        />
       </table>
 
-      <form className='DashLogInForm' onSubmit={handleLogInInputs}>
-        <label htmlFor="UserName">Username</label>
-        <input type="text" required={true} placeholder='Enter Username'
-          value={AdminUserName} onChange={(e) => setUsername(e.target.value)}></input>
-        <label htmlFor="Password">Password</label>
-        <input type="password" required={true} placeholder='Enter Password'
-          value={AdminPass} onChange={(e) => setPassword(e.target.value)}></input>
-        <br />
-        <input type="submit" value="Submit" className="SubmitLogInForm" />
+      <form className="DashContainForm" onSubmit={handleLogInInputs}>
+        <table className="DashContainTable">
+          <tr>
+            <th>
+              <label className="DashLabel" htmlFor="UserName">
+                Username
+              </label>
+            </th>
+            <th>
+              <label htmlFor="Password">Password</label>
+            </th>
+          </tr>
+          <tr>
+            <td>
+              <input
+                className="DashInputForm"
+                type="text"
+                required={true}
+                placeholder="Enter Username"
+                value={AdminUserName}
+                onChange={(e) => setUsername(e.target.value)}
+              ></input>
+            </td>
+            <td>
+              <input
+                className="DashInputForm"
+                type="password"
+                required={true}
+                placeholder="Enter Password"
+                value={AdminPass}
+                onChange={(e) => setPassword(e.target.value)}
+              ></input>
+            </td>
+            <input type="submit" value="Submit" className="SubmitContainForm" />
+          </tr>
+          <br />
+        </table>
       </form>
     </div>
   );
