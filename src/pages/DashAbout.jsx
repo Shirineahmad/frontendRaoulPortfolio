@@ -9,7 +9,7 @@ const About = () => {
   const [errorMessage, setErrorMessage] = useState('');
 
   const fetchDashAboutData = () => {
-    fetch('http://localhost:8000/About/getAll')
+    fetch(`${process.env.REACT_APP_API_URL}/About/getAll`)
       .then((response) => response.json())
       .then((data) => {
         console.log(data.data);
@@ -22,9 +22,11 @@ const About = () => {
     fetchDashAboutData();
   }, []);
 
-  const handleAboutInputs = async () => {
+  const handleAboutInputs = async (e) => {
+    e.preventDefault();
+    console.log("test");
     if (data.length > 7) {
-      setErrorMessage('You should delete previous credentials before adding new ones.');
+      setErrorMessage('You should delete previous data before adding new ones.');
       setTimeout(() => {
         setErrorMessage('');
       }, 10000);
@@ -34,19 +36,20 @@ const About = () => {
     const AboutDetails = { AboutTitle, AboutDesc };
     console.log(AboutDetails);
 
-    const response = await fetch('http://localhost:8000/About/add', {
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/About/add`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(AboutDetails),
     });
+    console.log(response);
 
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
 
-    console.log(response);
+    // console.log(response);
     const AboutData = await response.json();
     console.log(AboutData);
     setErrorMessage('About added successfully.');
@@ -60,7 +63,7 @@ const About = () => {
 
   const handleDelete = async (id) => {
 
-    const response = await fetch(`http://localhost:8000/About/delete/${id}`, {
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/About/delete/${id}`, {
       method: 'DELETE',
     });
 

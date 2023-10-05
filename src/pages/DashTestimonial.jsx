@@ -8,7 +8,7 @@ const Testimonial = () => {
   const [errorMessage, setErrorMessage] = useState('');
 
   const fetchDashTestimonialsData = () => {
-    fetch('http://localhost:8000/Testimonials/getAll')
+    fetch(`${process.env.REACT_APP_API_URL}/Testimonials/getAll`)
       .then((response) => response.json())
       .then((data) => {
         console.log(data.data);
@@ -19,7 +19,7 @@ const Testimonial = () => {
 
   const handleDelete = async (id) => {
 
-    const response = await fetch(`http://localhost:8000/Testimonials/delete/${id}`, {
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/Testimonials/delete/${id}`, {
       method: 'DELETE',
     });
 
@@ -29,7 +29,7 @@ const Testimonial = () => {
     }
 
 
-    setData((prevData) => prevData.filter((about) => about._id !== id));
+    setData((prevData) => prevData.filter((testimonial) => testimonial._id !== id));
     setErrorMessage('Testimonial deleted successfully.');
     setTimeout(() => {
       setErrorMessage('');
@@ -46,7 +46,7 @@ const Testimonial = () => {
     console.log('New Approve Value:', newApproveValue);
 
 
-    const response = await fetch(`http://localhost:8000/Testimonials/update/${id}`, {
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/Testimonials/update/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',

@@ -13,7 +13,7 @@ const RaoulPortfolio = () => {
   const [HeroData, setHeroData] = useState([]);
 
   const fetchDataForHeroSection = () => {
-    fetch('http://localhost:8000/Hero/getAll')
+    fetch(`${process.env.REACT_APP_API_URL}/Hero/getAll`)
       .then((response) => response.json())
       .then((data) => {
         console.log(data.data)

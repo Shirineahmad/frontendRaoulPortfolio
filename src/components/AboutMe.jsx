@@ -3,11 +3,14 @@ import React from 'react';
 import '../css/AboutMe.css'
 import AboutMeCards from './AboutMeCards';
 
+
 const AboutMe = () => {
   const [data, setData] = useState([]);
-
+  
   const fetchDataForAboutSection = () => {
-    fetch('http://localhost:8000/About/getAll')
+    console.log(process.env.REACT_APP_API_URL)
+    fetch(`${process.env.REACT_APP_API_URL}/About/getAll`)
+    
       .then((response) => response.json())
       .then((data) => {
         console.log(data.data)

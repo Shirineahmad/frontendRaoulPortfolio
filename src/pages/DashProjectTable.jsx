@@ -4,6 +4,7 @@ import React from 'react';
 const DashSkillsTable = ({ id, onDelete, ProjectImage, ProjectName, description, techUsed, DemoLink, RepoLink }) => {
 
   const handleDelete = () => {
+    console.log(id)
     onDelete(id);
   };
 

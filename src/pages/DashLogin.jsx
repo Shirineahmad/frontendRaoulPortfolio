@@ -9,7 +9,7 @@ const Login = () => {
   const [errorMessage, setErrorMessage] = useState('');
 
   const fetchDashLogInData = () => {
-    fetch('http://localhost:8000/LogIn/getAll')
+    fetch(`${process.env.REACT_APP_API_URL}/LogIn/getAll`)
       .then((response) => response.json())
       .then((data) => {
         console.log(data.data);
@@ -26,9 +26,10 @@ const Login = () => {
     fetchDashLogInData();
   }, []);
 
-  const handleUpdate = async () => {
+  const handleUpdate = async (e) => {
+   e.preventDefault();
 
-    if (data.length !== 1) {
+  if (data.length !== 1) {
       setErrorMessage('No data to update.');
       return;
     }
@@ -36,7 +37,7 @@ const Login = () => {
     const idToUpdate = data[0]._id;
     const updatedLogInDetails = { AdminUserName, AdminPass };
 
-    const response = await fetch(`http://localhost:8000/LogIn/update/${idToUpdate}`, {
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/LogIn/update/${idToUpdate}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',

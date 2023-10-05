@@ -14,7 +14,7 @@ const MyProjects = () => {
   const [image, setProjectImage] = useState(null);
 
   const fetchDashProjectsData = () => {
-    fetch('http://localhost:8000/MyProjects/getAll')
+    fetch(`${process.env.REACT_APP_API_URL}/MyProjects/getAll`)
       .then((response) => response.json())
       .then((data) => {
         console.log(data.data);
@@ -28,7 +28,7 @@ const MyProjects = () => {
 
   const handleDelete = async (id) => {
 
-    const response = await fetch(`http://localhost:8000/MyProjects/delete/${id}`, {
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/MyProjects/delete/${id}`, {
       method: 'DELETE',
     });
 
@@ -38,7 +38,8 @@ const MyProjects = () => {
     }
 
 
-    setData((prevData) => prevData.filter((about) => about._id !== id));
+    setData((prevData) => prevData.filter((project) => project._id !== id));
+    
     setErrorMessage('Project deleted successfully.');
     setTimeout(() => {
       setErrorMessage('');
@@ -64,7 +65,7 @@ const MyProjects = () => {
     formData.append('image', image);
 
     try {
-      const response = await fetch('http://localhost:8000/MyProjects/add', {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/MyProjects/add`, {
         method: 'POST',
         body: formData,
       });
@@ -118,6 +119,7 @@ const MyProjects = () => {
 
         {data.map((project) => (
           <DashProjectTable
+            id={project._id}
             key={project._id}
             ProjectImage={project.ProjectImage}
             ProjectName={project.ProjectName}

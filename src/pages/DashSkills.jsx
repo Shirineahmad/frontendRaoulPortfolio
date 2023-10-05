@@ -12,7 +12,7 @@ const DashSkills = () => {
 
 
   const fetchDashSkillsData = () => {
-    fetch('http://localhost:8000/Skills/getAll')
+    fetch(`${process.env.REACT_APP_API_URL}/Skills/getAll`)
       .then((response) => response.json())
       .then((data) => {
         console.log(data.data);
@@ -27,7 +27,7 @@ const DashSkills = () => {
 
   const handleDelete = async (id) => {
 
-    const response = await fetch(`http://localhost:8000/Skills/delete/${id}`, {
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/Skills/delete/${id}`, {
       method: 'DELETE',
     });
 
@@ -37,7 +37,7 @@ const DashSkills = () => {
     }
 
 
-    setData((prevData) => prevData.filter((about) => about._id !== id));
+    setData((prevData) => prevData.filter((skill) => skill._id !== id));
     setErrorMessage('Skill deleted successfully.');
     setTimeout(() => {
       setErrorMessage('');
@@ -61,7 +61,7 @@ const DashSkills = () => {
     formData.append('image', image);
 
     try {
-      const response = await fetch('http://localhost:8000/Skills/add', {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/Skills/add`, {
         method: 'POST',
         body: formData,
       });

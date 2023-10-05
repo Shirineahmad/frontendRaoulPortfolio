@@ -15,7 +15,7 @@ const ProjectCarousel = () => {
   const [ProjectData, setProjectData] = useState([]);
 
   const fetchDataForProjectSection = () => {
-    fetch('http://localhost:8000/MyProjects/getAll')
+    fetch(`${process.env.REACT_APP_API_URL}/MyProjects/getAll`)
       .then((response) => response.json())
       .then((data) => {
         console.log(data.data)

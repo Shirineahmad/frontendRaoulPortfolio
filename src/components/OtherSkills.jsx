@@ -7,7 +7,7 @@ function OtherSkills() {
 
     const [data, setData] = useState([]);
     const fetchDataForOtherSkills = () => {
-        fetch('http://localhost:8000/Skills/getAll')
+        fetch(`${process.env.REACT_APP_API_URL}/Skills/getAll`)
           .then((response) => response.json())
           .then((data) => {
             console.log(data.data)
@@ -25,6 +25,7 @@ function OtherSkills() {
         <div className="other-skills">
         {filteredData.map((OtherSkill) => (
         <SkillContent
+          key = {OtherSkill?._id}
           iconSrc={OtherSkill?.SkillImage}
           skillName={OtherSkill?.SkillDesc}
         />

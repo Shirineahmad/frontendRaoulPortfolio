@@ -13,13 +13,13 @@ function ContactInfo() {
   const [errorMessage, setErrorMessage] = useState('');
 
   const fetchDashContactInfoData = () => {
-    fetch('http://localhost:8000/ContactInfoAndDesc/getAll')
+    fetch(`${process.env.REACT_APP_API_URL}/ContactInfoAndDesc/getAll`)
       .then((response) => response.json())
       .then((data) => {
         console.log(data.data);
         setData(data.data);
 
-        // Set the input field values using the fetched data
+        
         if (data.data.length === 1) {
           const fetchedData = data.data[0];
           setDesc(fetchedData.SmallDesc);
@@ -37,7 +37,8 @@ function ContactInfo() {
     fetchDashContactInfoData();
   }, []);
 
-  const handleUpdate = async () => {
+  const handleUpdate = async (e) => {
+    e.preventDefault();
 
     if (data.length !== 1) {
       setErrorMessage('No data to update.');
@@ -47,7 +48,7 @@ function ContactInfo() {
     const idToUpdate = data[0]._id;
     const updatedContactInfoDetails = { SmallDesc, PhoneNb, Email, InLink, FbLink, InstagramLink };
 
-    const response = await fetch(`http://localhost:8000/ContactInfoAndDesc/update/${idToUpdate}`, {
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/ContactInfoAndDesc/update/${idToUpdate}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',

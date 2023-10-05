@@ -13,7 +13,7 @@ const Heros = () => {
   const [image, setHeroImage] = useState(null);
 
   const fetchDashHeroData = () => {
-    fetch('http://localhost:8000/Hero/getAll')
+    fetch(`${process.env.REACT_APP_API_URL}/Hero/getAll`)
       .then((response) => response.json())
       .then((data) => {
         console.log(data.data);
@@ -41,7 +41,7 @@ const Heros = () => {
     formData.append('image', image);
 
     try {
-      const response = await fetch(`http://localhost:8000/Hero/update/${idToUpdate}`, {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/Hero/update/${idToUpdate}`, {
         method: 'PUT',
         body: formData,
       });

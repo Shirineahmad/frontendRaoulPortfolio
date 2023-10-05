@@ -8,7 +8,7 @@ const ContactMe = () => {
 
 
   const fetchDashContactInData = () => {
-    fetch('http://localhost:8000/ContactMe/getAll')
+    fetch(`${process.env.REACT_APP_API_URL}/ContactMe/getAll`)
       .then((response) => response.json())
       .then((data) => {
         console.log(data.data);
@@ -23,7 +23,7 @@ const ContactMe = () => {
 
   const handleDelete = async (id) => {
 
-    const response = await fetch(`http://localhost:8000/ContactMe/delete/${id}`, {
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/ContactMe/delete/${id}`, {
       method: 'DELETE',
     });
 
@@ -33,15 +33,15 @@ const ContactMe = () => {
     }
 
 
-    setData((prevData) => prevData.filter((about) => about._id !== id));
-    setErrorMessage('About deleted successfully.');
+    setData((prevData) => prevData.filter((contact) => contact._id !== id));
+    setErrorMessage('Mail Readed successfully.');
     setTimeout(() => {
       setErrorMessage('');
     }, 10000);
   };
   return (
     <div>
-      <h1 className='ContactMe-Dashboard '>Contact Me</h1>
+      <h1 className='ContactMe-Dashboard '>Contacted By</h1>
       {errorMessage && <p>{errorMessage}</p>}
       <p>You Have  {data.length} unreaded messages </p>
       <table className='DashContactTable'>

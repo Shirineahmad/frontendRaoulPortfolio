@@ -10,7 +10,7 @@ const Footer = () => {
   const [DescData, setDescData] = useState([]);
 
   const fetchDataForWhoSection = () => {
-    fetch('http://localhost:8000/ContactInfoAndDesc/getAll')
+    fetch(`${process.env.REACT_APP_API_URL}/ContactInfoAndDesc/getAll`)
       .then((response) => response.json())
       .then((data) => {
         console.log(data.data)

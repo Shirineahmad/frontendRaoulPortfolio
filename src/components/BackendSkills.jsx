@@ -7,7 +7,7 @@ function BackendSkills() {
 
     const [data, setData] = useState([]);
     const fetchDataForBackSkills = () => {
-        fetch('http://localhost:8000/Skills/getAll')
+        fetch(`${process.env.REACT_APP_API_URL}/Skills/getAll`)
           .then((response) => response.json())
           .then((data) => {
             console.log(data.data)
@@ -26,6 +26,7 @@ function BackendSkills() {
         <div className="backend-skills">
        {filteredData.map((BackSkill) => (
         <SkillContent
+          key = {BackSkill?._id}
           iconSrc={BackSkill?.SkillImage}
           skillName={BackSkill?.SkillDesc}
         />

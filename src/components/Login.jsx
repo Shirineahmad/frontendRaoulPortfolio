@@ -9,7 +9,7 @@ const Login = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const handleLogin = () => {
-    fetch("http://localhost:8000/LogIn/getAll")
+    fetch(`${process.env.REACT_APP_API_URL}/LogIn/getAll`)
       .then((response) => response.json())
       .then((data) => {
         const adminData = data.data[0];

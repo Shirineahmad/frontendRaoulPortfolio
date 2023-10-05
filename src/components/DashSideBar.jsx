@@ -1,14 +1,18 @@
 import { useState } from "react";
 import "../css/DashSideBar.css";
 import { BiLogOut } from "react-icons/bi";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const SideBar = () => {
   const [burger_class, setBurgerClass] = useState("burger-bar unclicked");
   const [isMenuClicked, setIsMenuClicked] = useState(true);
+  const navigate = useNavigate();
   
-  function handleLogout() {
-    localStorage.clear();}
+  const handleLogout = () => {
+  
+    localStorage.removeItem('isLoggedIn');
+    navigate('/');
+  };
 
   const updateMenu = () => {
     if (isMenuClicked) {
@@ -57,7 +61,7 @@ const SideBar = () => {
           <Link to="/dashboard/contactInfo">Contact Info</Link>
         </div>
         <div className="dashboardAbout">
-          <Link to="/dashboard/contactMe">Contact Me</Link>
+          <Link to="/dashboard/contactMe">Contacted By</Link>
         </div>
        
         

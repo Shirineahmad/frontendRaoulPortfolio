@@ -19,7 +19,7 @@ const ContactMe = () => {
   const ContactDetails = {UserName:username, Email, Message };
   console.log(ContactDetails);
 
-  const response = await fetch('http://localhost:8000/ContactMe/add', {
+  const response = await fetch(`${process.env.REACT_APP_API_URL}/ContactMe/add`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

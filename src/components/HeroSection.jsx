@@ -9,7 +9,8 @@ const HeroSection = ({ SmallDesc, HeroImage }) => {
           <p className="intro">Hello!</p>
           <p className="head-title">I'm Raoul Baddawi</p>
           <p className="intro">{SmallDesc}</p>
-          <button className="btn_start">Get to Know Me</button>
+          <a href="/#AboutMe-void">
+          <button className="btn_start">Get to Know Me</button></a>
         </div>
         <div className="cont-img">
           <img
@@ -36,7 +37,8 @@ const HeroSection = ({ SmallDesc, HeroImage }) => {
             alt="Rectangle"
           />
 
-          <button className="btn_start">Get to Know Me</button>
+            <a href="/#AboutMe-void">
+          <button className="btn_start">Get to Know Me</button></a>
           <img
             className="image2"
             src={`data:image/png;base64,${HeroImage}`}

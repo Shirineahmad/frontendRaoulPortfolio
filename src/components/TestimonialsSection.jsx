@@ -13,7 +13,7 @@ function Testimonials() {
     const [errorMessage, setErrorMessage] = useState('');
     
     const fetchDataForTestimonialSection = () => {
-        fetch('http://localhost:8000/Testimonials/getAll')
+        fetch(`${process.env.REACT_APP_API_URL}/Testimonials/getAll`)
           .then((response) => response.json())
           .then((data) => {
             const approvedTestimonials = data.data.filter(testimonial => testimonial.approve === true);
@@ -47,7 +47,7 @@ function Testimonials() {
     formData.append('Review', Review);
     formData.append('image', image);
     try {
-        const response = await fetch('http://localhost:8000/Testimonials/add', {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/Testimonials/add`, {
           method: 'POST',
           body: formData,
         });
